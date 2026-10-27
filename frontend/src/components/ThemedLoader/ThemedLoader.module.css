@@ -1,0 +1,195 @@
+.loaderContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  position: relative;
+  text-align: center;
+}
+
+.fullScreen {
+  min-height: 80vh;
+}
+
+.glowAura {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 166, 35, 0.18) 0%, rgba(99, 102, 241, 0.08) 50%, transparent 70%);
+  filter: blur(35px);
+  pointer-events: none;
+  animation: pulseGlow 3s ease-in-out infinite alternate;
+}
+
+.visualWrapper {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.orbitRing {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(245, 166, 35, 0.4);
+  animation: rotateOrbit 12s linear infinite;
+}
+
+.orbitDot {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: #ffd000;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ffd000;
+  top: 10px;
+  left: 66px;
+  animation: rotateOrbit 6s linear infinite;
+}
+
+.giftBoxWrapper {
+  position: relative;
+  z-index: 2;
+}
+
+.giftIconBox {
+  width: 76px;
+  height: 76px;
+  background: linear-gradient(135deg, #1e2538 0%, #111624 100%);
+  border: 2px solid rgba(245, 166, 35, 0.5);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(245, 166, 35, 0.25);
+  animation: floatBox 2.5s ease-in-out infinite alternate;
+}
+
+.giftIcon {
+  color: #ffd000;
+  filter: drop-shadow(0 2px 8px rgba(245, 166, 35, 0.6));
+}
+
+.floatingCoin {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, #ffe066 0%, #d48806 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 13px;
+  color: #1a1500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 12px rgba(255, 208, 0, 0.5);
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  animation: coinBounce 3s ease-in-out infinite;
+}
+
+.sparkle1 {
+  position: absolute;
+  top: -10px;
+  left: -8px;
+  color: #ffd000;
+  animation: sparkleTwinkle 2s ease-in-out infinite;
+}
+
+.sparkle2 {
+  position: absolute;
+  bottom: -4px;
+  right: -8px;
+  color: #06b6d4;
+  animation: sparkleTwinkle 2.4s ease-in-out infinite 0.5s;
+}
+
+.badgeLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(245, 166, 35, 0.12);
+  border: 1px solid rgba(245, 166, 35, 0.3);
+  padding: 4px 14px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #ffd000;
+  margin-bottom: 12px;
+}
+
+.badgeIcon {
+  color: #ffd000;
+}
+
+.loadingMessage {
+  font-family: var(--font-heading);
+  font-size: 17px;
+  font-weight: 600;
+  color: #f1f5f9;
+  margin-bottom: 18px;
+  min-height: 26px;
+  transition: opacity 0.3s ease;
+}
+
+.progressDots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  animation: dotPulse 1.4s ease-in-out infinite;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+.dot:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  100% { transform: scale(1.15); opacity: 1; }
+}
+
+@keyframes rotateOrbit {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes floatBox {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-8px); }
+}
+
+@keyframes coinBounce {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(180deg); }
+}
+
+@keyframes sparkleTwinkle {
+  0%, 100% { transform: scale(0.8); opacity: 0.4; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
+@keyframes dotPulse {
+  0%, 100% { background: rgba(255, 255, 255, 0.2); transform: scale(0.85); }
+  50% { background: #ffd000; transform: scale(1.25); box-shadow: 0 0 8px rgba(255, 208, 0, 0.6); }
+}

@@ -1,0 +1,135 @@
+.bannerOuter {
+  padding: 16px 0;
+  position: relative;
+  z-index: 20;
+}
+
+.bannerCard {
+  background: linear-gradient(135deg, rgba(245, 166, 35, 0.15) 0%, rgba(99, 102, 241, 0.12) 100%);
+  border: 1.5px solid rgba(245, 166, 35, 0.5);
+  border-radius: var(--radius-lg);
+  padding: 24px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  box-shadow: 0 12px 35px rgba(245, 166, 35, 0.2), inset 0 0 20px rgba(245, 166, 35, 0.08);
+  animation: glowPulse 3s ease-in-out infinite alternate;
+}
+
+.leftInfo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.trophyIconWrap {
+  width: 58px;
+  height: 58px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #ffd000 0%, #d97706 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(245, 166, 35, 0.4);
+  flex-shrink: 0;
+}
+
+.trophyIcon {
+  color: #11141d;
+}
+
+.textGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.congratsBadge {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #ffd000;
+  text-transform: uppercase;
+}
+
+.heading {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.subtext {
+  font-size: 13px;
+  color: #cbd5e1;
+  max-width: 560px;
+}
+
+.actionCol {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.claimBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-gold-gradient);
+  color: #11141d;
+  font-size: 14px;
+  font-weight: 800;
+  padding: 12px 26px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 6px 18px rgba(245, 166, 35, 0.35);
+  transition: all 0.2s ease;
+}
+
+.claimBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(245, 166, 35, 0.5);
+}
+
+.claimedPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.5);
+  color: #34d399;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 10px 20px;
+  border-radius: var(--radius-full);
+}
+
+.deadlineInfo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+@keyframes glowPulse {
+  0% { border-color: rgba(245, 166, 35, 0.4); }
+  100% { border-color: rgba(245, 166, 35, 0.8); }
+}
+
+@media (max-width: 860px) {
+  .bannerCard {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .actionCol {
+    align-items: flex-start;
+    width: 100%;
+  }
+  .claimBtn {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,318 @@
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(4, 7, 13, 0.85);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.modalDialog {
+  background: #111624;
+  border: 1px solid rgba(245, 166, 35, 0.4);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85), 0 0 35px rgba(245, 166, 35, 0.15);
+  overflow: hidden;
+  animation: slideUp 0.25s ease-out;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 22px;
+  background: rgba(18, 24, 38, 0.9);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.iconWrap {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: rgba(245, 166, 35, 0.15);
+  color: #ffd000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalTitle {
+  font-size: 17px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.modalSub {
+  font-size: 12px;
+  color: #ffd000;
+  font-weight: 600;
+}
+
+.closeBtn {
+  background: transparent;
+  color: var(--text-muted);
+  padding: 6px;
+  border-radius: 50%;
+  transition: color 0.2s;
+}
+
+.closeBtn:hover {
+  color: #ffffff;
+}
+
+.modalBody {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.balanceSummary {
+  background: rgba(18, 24, 38, 0.8);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.calcRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+}
+
+.calcRowTotal {
+  padding-top: 10px;
+  border-top: 1px solid var(--border-subtle);
+  margin-top: 4px;
+}
+
+.calcLabel {
+  color: var(--text-secondary);
+}
+
+.calcLabelBold {
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.calcVal {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.calcValGold {
+  font-weight: 800;
+  color: #ffd000;
+}
+
+.calcValGreen {
+  font-weight: 800;
+  color: #34d399;
+}
+
+.calcValRed {
+  font-weight: 800;
+  color: #fb7185;
+}
+
+.insufficientWarning {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(244, 63, 94, 0.12);
+  border: 1px solid rgba(244, 63, 94, 0.35);
+  color: #fb7185;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.checkboxLabel input {
+  margin-top: 3px;
+  accent-color: #ffd000;
+  cursor: pointer;
+}
+
+.errorAlert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(244, 63, 94, 0.12);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  color: #fb7185;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 12px;
+}
+
+.modalFooter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.cancelBtn {
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: var(--radius-full);
+}
+
+.confirmBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent-gold-gradient);
+  color: #11141d;
+  font-size: 14px;
+  font-weight: 800;
+  padding: 11px 22px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 14px rgba(245, 166, 35, 0.3);
+  transition: all 0.2s;
+}
+
+.confirmBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Success Body */
+.successBody {
+  padding: 36px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.successIconCircle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.12);
+  border: 2px solid rgba(16, 185, 129, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.successCheck {
+  color: #34d399;
+}
+
+.successTitle {
+  font-size: 24px;
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.successMessage {
+  font-size: 14px;
+  color: var(--text-secondary);
+  max-width: 380px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.summaryBox {
+  width: 100%;
+  background: rgba(18, 24, 38, 0.8);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.summaryRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.summaryRow strong {
+  color: #ffd000;
+}
+
+.summaryRow code {
+  font-family: monospace;
+  color: #38bdf8;
+  background: rgba(6, 182, 212, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.goodLuckText {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffd000;
+  margin-bottom: 20px;
+}
+
+.viewGiveawayBtn {
+  background: var(--accent-gold-gradient);
+  color: #11141d;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 10px 24px;
+  border-radius: var(--radius-full);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

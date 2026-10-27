@@ -1,0 +1,175 @@
+.section {
+  padding: 60px 0;
+  position: relative;
+  background: rgba(14, 19, 31, 0.4);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.sectionHeader {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 48px auto;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.subtitle {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.contentGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+}
+
+.colHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.colHeaderIconGold {
+  color: #ffd000;
+}
+
+.colHeaderIconCyan {
+  color: #38bdf8;
+}
+
+.colTitle {
+  font-size: 20px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+/* Rules List */
+.rulesList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ruleCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.ruleCard:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.ruleIconCheck {
+  color: #34d399;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.ruleName {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.ruleText {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* Accordion */
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.accordionItem {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.accordionItem:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.itemOpen {
+  border-color: rgba(245, 166, 35, 0.4);
+  background: rgba(22, 28, 44, 0.7);
+}
+
+.accordionHeader {
+  width: 100%;
+  padding: 16px 20px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.questionText {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.4;
+}
+
+.chevron {
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.chevronRotated {
+  transform: rotate(180deg);
+  color: #ffd000;
+}
+
+.accordionBody {
+  padding: 0 20px 18px 20px;
+  font-size: 13px;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .contentGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}

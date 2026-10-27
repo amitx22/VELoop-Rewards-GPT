@@ -1,0 +1,250 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 13, 20, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border-subtle);
+  padding: 12px 0;
+  transition: all 0.25s ease;
+}
+
+.navContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logoIconWrapper {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, #ffd000 0%, #d97706 100%);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(245, 166, 35, 0.35);
+}
+
+.logoIcon {
+  color: #11141d;
+}
+
+.logoTextWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.logoName {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.logoBadge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--accent-gold);
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.navLink {
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  position: relative;
+  padding: 4px 0;
+}
+
+.navLink:hover {
+  color: var(--text-primary);
+}
+
+.navLinkActive {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.navLinkActive::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent-gold-gradient);
+  border-radius: 9999px;
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.balancesGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.balancePill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid var(--border-subtle);
+  background: rgba(18, 24, 38, 0.6);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.balancePill:hover {
+  transform: translateY(-1px);
+}
+
+.vePill {
+  border-color: rgba(245, 166, 35, 0.3);
+  color: #ffd000;
+}
+
+.balanceIconGold {
+  color: #ffd000;
+}
+
+.svePill {
+  border-color: rgba(6, 182, 212, 0.3);
+  color: #38bdf8;
+}
+
+.balanceIconCyan {
+  color: #38bdf8;
+}
+
+.tokenPill {
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #34d399;
+}
+
+.balanceIconEmerald {
+  color: #34d399;
+}
+
+.balanceVal {
+  font-family: var(--font-heading);
+  font-weight: 700;
+}
+
+.currencyName {
+  font-size: 11px;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 12px 5px 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+}
+
+.avatar {
+  width: 28px;
+  height: 28px;
+  background: var(--bg-tertiary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-gold);
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.userName {
+  font-size: 12px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.userIdBadge {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.visitorAuth {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.visitorTag {
+  font-size: 12px;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+}
+
+.loginBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-gold-gradient);
+  color: #11141d;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 4px 12px rgba(245, 166, 35, 0.25);
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.loginBtn:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 992px) {
+  .navLinks {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .balancesGroup .svePill,
+  .balancesGroup .tokenPill {
+    display: none;
+  }
+  .userInfo {
+    display: none;
+  }
+}
