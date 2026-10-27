@@ -23,6 +23,7 @@ class DataStore {
         userId: 'VE10025',
         fullName: 'Rahul Sharma',
         email: 'rahul.sharma@example.com',
+        password: 'password123',
         role: 'USER',
         balances: { VEs: 850, SVEs: 1200, Tokens: 5000 },
         isSuspicious: false,
@@ -32,6 +33,7 @@ class DataStore {
         userId: 'VE10042',
         fullName: 'Priya Patel',
         email: 'priya.patel@example.com',
+        password: 'password123',
         role: 'USER',
         balances: { VEs: 350, SVEs: 800, Tokens: 3500 },
         isSuspicious: false,
@@ -41,6 +43,7 @@ class DataStore {
         userId: 'VE10099',
         fullName: 'Amit Kumar (Low Balance Test)',
         email: 'amit.lowbalance@example.com',
+        password: 'password123',
         role: 'USER',
         balances: { VEs: 50, SVEs: 40, Tokens: 200 },
         isSuspicious: false,
@@ -50,6 +53,7 @@ class DataStore {
         userId: 'VE99999',
         fullName: 'Flagged Test Account',
         email: 'suspicious.user@example.com',
+        password: 'password123',
         role: 'USER',
         balances: { VEs: 1000, SVEs: 2000, Tokens: 10000 },
         isSuspicious: true,
@@ -59,6 +63,7 @@ class DataStore {
         userId: 'ADMIN01',
         fullName: 'VELOOP Admin',
         email: 'admin@veloop.io',
+        password: 'adminpassword123',
         role: 'ADMIN',
         balances: { VEs: 99999, SVEs: 99999, Tokens: 99999 },
         isSuspicious: false,
@@ -349,6 +354,50 @@ class DataStore {
       this.users.set(userId, user);
     }
     return user;
+  }
+
+  findUserByEmailOrId(query) {
+    if (!query) return null;
+    const qLower = query.trim().toLowerCase();
+    for (const u of this.users.values()) {
+      if (
+        u.userId.toLowerCase() === qLower ||
+        (u.email && u.email.toLowerCase() === qLower)
+      ) {
+        return u;
+      }
+    }
+    return null;
+  }
+
+  createUser({ fullName, email, password, role = 'USER' }) {
+    // Check if email already registered
+    const existing = this.findUserByEmailOrId(email);
+    if (existing) {
+      throw new Error('EMAIL_ALREADY_REGISTERED');
+    }
+
+    const randomSuffix = Math.floor(10000 + Math.random() * 90000);
+    const userId = `VE${randomSuffix}`;
+
+    const newUser = {
+      userId,
+      fullName: fullName || `User ${randomSuffix}`,
+      email: email.trim().toLowerCase(),
+      password: password || 'password123',
+      role,
+      balances: {
+        VEs: 300, // 300 VEs Welcome Bonus! Enough for iPhone or Apple Watch entry!
+        SVEs: 500, // 500 SVEs for AirPods entry!
+        Tokens: 2500, // 2500 Tokens for Amazon ₹20 entry!
+      },
+      isSuspicious: false,
+      deviceHashes: [],
+      createdAt: new Date(),
+    };
+
+    this.users.set(userId, newUser);
+    return newUser;
   }
 
   // Giveaway queries

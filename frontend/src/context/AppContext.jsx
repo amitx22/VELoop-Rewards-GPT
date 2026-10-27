@@ -56,6 +56,54 @@ export const AppProvider = ({ children }) => {
     init();
   }, [loadUser, loadCurrentGiveaway]);
 
+  // User Login
+  const handleLogin = async (identifier, password) => {
+    try {
+      setLoading(true);
+      const res = await api.login(identifier, password);
+      if (res.success) {
+        setUser(res.user);
+        setIsAuthenticated(true);
+        setSelectedUserKey(res.user.userId);
+      }
+      await loadCurrentGiveaway();
+      return res;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // User Register
+  const handleRegister = async ({ fullName, email, password }) => {
+    try {
+      setLoading(true);
+      const res = await api.register({ fullName, email, password });
+      if (res.success) {
+        setUser(res.user);
+        setIsAuthenticated(true);
+        setSelectedUserKey(res.user.userId);
+      }
+      await loadCurrentGiveaway();
+      return res;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // User Logout
+  const handleLogout = async () => {
+    try {
+      setLoading(true);
+      await api.logout();
+      setUser(null);
+      setIsAuthenticated(false);
+      setSelectedUserKey('VISITOR');
+      await loadCurrentGiveaway();
+    } finally {
+      setLoading(false);
+    }
+  };
+
   // Switch User (Demo state switcher)
   const handleSwitchUser = async (userId) => {
     try {
@@ -114,6 +162,9 @@ export const AppProvider = ({ children }) => {
         setActiveTab,
         loadCurrentGiveaway,
         loadUser,
+        handleLogin,
+        handleRegister,
+        handleLogout,
         handleSwitchUser,
         handleAddBalance,
         handleSetGiveawayStatus,

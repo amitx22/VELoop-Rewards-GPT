@@ -7,6 +7,7 @@ import { DemoStateSwitcher } from './components/DemoStateSwitcher/DemoStateSwitc
 import { GiveawayHome } from './pages/GiveawayHome/GiveawayHome.jsx';
 import { GiveawayDetail } from './pages/GiveawayDetail/GiveawayDetail.jsx';
 import { WinnersPage } from './pages/WinnersPage/WinnersPage.jsx';
+import { LoginPage } from './pages/LoginPage/LoginPage.jsx';
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
           <div style={{ flex: 1 }}>
             <Routes>
               <Route path="/" element={<GiveawayHome />} />
+              <Route path="/login" element={<LoginPage />} />
               <Route path="/giveaway/:slug" element={<GiveawayDetail />} />
               <Route path="/winners" element={<WinnersPage />} />
               {/* Fallback */}

@@ -162,6 +162,10 @@
   font-weight: 500;
 }
 
+.userProfileWrapper {
+  position: relative;
+}
+
 .userProfile {
   display: flex;
   align-items: center;
@@ -170,6 +174,13 @@
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.userProfile:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(245, 166, 35, 0.4);
 }
 
 .avatar {
@@ -186,6 +197,7 @@
 .userInfo {
   display: flex;
   flex-direction: column;
+  text-align: left;
 }
 
 .userName {
@@ -198,6 +210,80 @@
 .userIdBadge {
   font-size: 10px;
   color: var(--text-muted);
+}
+
+.chevronIcon {
+  color: var(--text-muted);
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 220px;
+  background: #111624;
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  z-index: 200;
+  animation: fadeIn 0.15s ease-out;
+}
+
+.dropdownHeader {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 10px;
+}
+
+.ddUserName {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.ddUserEmail {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.dropdownDivider {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: 4px 0;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  transition: all 0.15s ease;
+  text-decoration: none;
+}
+
+.dropdownItem:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+
+.logoutItem {
+  color: #fb7185;
+}
+
+.logoutItem:hover {
+  background: rgba(244, 63, 94, 0.1);
+  color: #fb7185;
 }
 
 .visitorAuth {

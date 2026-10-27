@@ -1,0 +1,471 @@
+.pageOuter {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 30px 16px 60px 16px;
+  overflow: hidden;
+}
+
+.glowBackdrop {
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(245, 166, 35, 0.15) 0%, rgba(99, 102, 241, 0.08) 50%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+}
+
+.topBackNav {
+  margin-bottom: 24px;
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: color 0.2s;
+}
+
+.backBtn:hover {
+  color: #ffd000;
+}
+
+.cardContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.authCard {
+  background: #111624;
+  border: 1px solid rgba(245, 166, 35, 0.35);
+  border-radius: var(--radius-xl);
+  padding: 36px 32px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 35px rgba(245, 166, 35, 0.1);
+  position: relative;
+  z-index: 5;
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+  text-decoration: none;
+}
+
+.logoIcon {
+  width: 40px;
+  height: 40px;
+  background: var(--accent-gold-gradient);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.giftIcon {
+  color: #11141d;
+}
+
+.logoTextGroup {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.brandTitle {
+  font-family: var(--font-heading);
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.brandSub {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #ffd000;
+}
+
+.headerHeading {
+  font-size: 26px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.headerDesc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.tabNav {
+  display: flex;
+  width: 100%;
+  background: rgba(18, 24, 38, 0.8);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  padding: 4px;
+}
+
+.tabBtn {
+  flex: 1;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.tabActive {
+  background: var(--accent-gold-gradient);
+  color: #11141d;
+  box-shadow: 0 4px 12px rgba(245, 166, 35, 0.3);
+}
+
+.formBody {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.inputGroup label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.passwordLabelRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.forgotPass {
+  font-size: 11px;
+  color: #ffd000;
+}
+
+.inputWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 14px;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.inputWrap input {
+  width: 100%;
+  padding: 12px 42px 12px 42px;
+  background: rgba(18, 24, 38, 0.9);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-sm);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 14px;
+  transition: border-color 0.2s;
+}
+
+.inputWrap input:focus {
+  outline: none;
+  border-color: #ffd000;
+  box-shadow: 0 0 12px rgba(245, 166, 35, 0.25);
+}
+
+.eyeBtn {
+  position: absolute;
+  right: 12px;
+  background: transparent;
+  color: var(--text-muted);
+  padding: 4px;
+  display: flex;
+  align-items: center;
+}
+
+.eyeBtn:hover {
+  color: #ffffff;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 13px 20px;
+  background: var(--accent-gold-gradient);
+  color: #11141d;
+  font-size: 14px;
+  font-weight: 800;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 4px;
+  box-shadow: 0 6px 20px rgba(245, 166, 35, 0.35);
+  transition: all 0.2s;
+}
+
+.submitBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(245, 166, 35, 0.45);
+}
+
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.perkCard {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(245, 166, 35, 0.1);
+  border: 1px solid rgba(245, 166, 35, 0.3);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+}
+
+.perkInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.perkInfo strong {
+  font-size: 12px;
+  color: #ffd000;
+}
+
+.perkInfo span {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.goldIcon {
+  color: #ffd000;
+  flex-shrink: 0;
+}
+
+.cyanIcon {
+  color: #38bdf8;
+  flex-shrink: 0;
+}
+
+.errorAlert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(244, 63, 94, 0.15);
+  border: 1px solid rgba(244, 63, 94, 0.35);
+  color: #fb7185;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.successAlert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #34d399;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.demoSection {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.demoDivider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.demoDivider::before,
+.demoDivider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.demoDivider span {
+  padding: 0 10px;
+}
+
+.demoPresetsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.demoPresetCard {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.demoPresetCard:hover {
+  background: rgba(245, 166, 35, 0.08);
+  border-color: rgba(245, 166, 35, 0.3);
+}
+
+.demoRole {
+  font-size: 11px;
+  font-weight: 700;
+  color: #ffd000;
+}
+
+.demoName {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.shieldGreen {
+  color: #34d399;
+}
+
+/* Already Logged In State */
+.alreadyLoggedCard {
+  background: #111624;
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: var(--radius-xl);
+  padding: 36px 32px;
+  width: 100%;
+  max-width: 460px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userIconCircle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.12);
+  border: 2px solid rgba(16, 185, 129, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+.greenCheck {
+  color: #34d399;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #ffffff;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 18px;
+}
+
+.balancePreview {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.balPill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(18, 24, 38, 0.9);
+  border: 1px solid var(--border-medium);
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.actionRow {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.switchBtn {
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px;
+  transition: color 0.2s;
+}
+
+.switchBtn:hover {
+  color: #ffffff;
+}

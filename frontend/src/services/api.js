@@ -57,6 +57,32 @@ class ApiClient {
     return this.fetchJson('/auth/me');
   }
 
+  async login(identifier, password) {
+    const res = await this.fetchJson('/auth/login', {
+      method: 'POST',
+      body: JSON.stringify({ identifier, password }),
+    });
+    this.setAuth(res.token, res.user.userId);
+    return res;
+  }
+
+  async register({ fullName, email, password }) {
+    const res = await this.fetchJson('/auth/register', {
+      method: 'POST',
+      body: JSON.stringify({ fullName, email, password }),
+    });
+    this.setAuth(res.token, res.user.userId);
+    return res;
+  }
+
+  async logout() {
+    try {
+      await this.fetchJson('/auth/logout', { method: 'POST' });
+    } catch (e) {}
+    this.setAuth(null, null);
+    return { success: true };
+  }
+
   async switchUser(userId) {
     const res = await this.fetchJson('/auth/switch-user', {
       method: 'POST',

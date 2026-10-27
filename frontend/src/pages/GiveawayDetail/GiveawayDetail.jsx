@@ -216,7 +216,9 @@ export const GiveawayDetail = () => {
                 {!isAuthenticated ? (
                   <button
                     id="btn-login-detail"
-                    onClick={() => handleSwitchUser('VE10025')}
+                    onClick={() =>
+                      navigate(`/login?redirect=/giveaway/${prize.slug || prize.prizeId}`)
+                    }
                     className={`${styles.mainCtaBtn} ${styles.goldBtn}`}
                   >
                     <span>Sign In to Participate</span>

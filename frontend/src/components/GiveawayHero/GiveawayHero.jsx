@@ -81,7 +81,7 @@ export const GiveawayHero = () => {
             {!isAuthenticated ? (
               <button
                 id="hero-join-cta"
-                onClick={handleCtaClick}
+                onClick={() => navigate('/login')}
                 className={`${styles.primaryBtn} ${styles.goldBtn}`}
               >
                 <span>Login to Participate</span>
