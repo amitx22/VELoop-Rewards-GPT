@@ -8,6 +8,8 @@
 
 An enterprise-grade, fintech-inspired Full-Stack Giveaway & Rewards System engineered for **VELOOP Rewards**. Built with strict cryptographic fairness, atomic balance transaction handling, anti-abuse fraud protection, and a luxury dark-mode user experience.
 
+**Live Demo** : https://veloop-rewards-gpt-plum.vercel.app/
+
 ---
 
 ## 🌟 Architecture & Core Principles
