@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './PrizeCard.module.css';
-import { Users, Clock, ArrowRight, Trophy, Zap, Coins, Award } from 'lucide-react';
+import { Users, Clock, ArrowRight, Trophy, Zap, Coins, Award, Sparkles, ShieldCheck } from 'lucide-react';
 
 export const PrizeCard = ({ prize, giveawayId, remainingDays = '12d' }) => {
   const navigate = useNavigate();
@@ -22,12 +22,43 @@ export const PrizeCard = ({ prize, giveawayId, remainingDays = '12d' }) => {
     }
   };
 
+  const isFirstPrize = prize.position === 1;
+  const isSecondPrize = prize.position === 2;
+  const isThirdPrize = prize.position === 3;
+
+  const getPositionClass = () => {
+    if (isFirstPrize) return styles.badgeGold;
+    if (isSecondPrize) return styles.badgeCyan;
+    if (isThirdPrize) return styles.badgePurple;
+    return styles.badgeDefault;
+  };
+
+  const getCardThemeClass = () => {
+    if (isFirstPrize) return styles.cardThemeGold;
+    if (isSecondPrize) return styles.cardThemeCyan;
+    if (isThirdPrize) return styles.cardThemePurple;
+    return styles.cardThemeEmerald;
+  };
+
+  const firstSpec = Array.isArray(prize.specs)
+    ? prize.specs[0]
+    : typeof prize.specs === 'string'
+    ? prize.specs.split(' ').slice(0, 2).join(' ')
+    : null;
+
   return (
-    <div className={styles.card}>
-      {/* Position Badge */}
+    <div className={`${styles.card} ${getCardThemeClass()}`}>
+      {/* Top Lighting Accent Strip */}
+      <div className={styles.topAccentGlow}></div>
+
+      {/* Badges Header Row */}
       <div className={styles.badgeRow}>
-        <div className={`${styles.positionBadge} ${prize.position === 1 ? styles.goldBadge : ''}`}>
-          <Trophy size={13} />
+        <div className={`${styles.positionBadge} ${getPositionClass()}`}>
+          {isFirstPrize ? (
+            <Trophy size={13} className={styles.trophyFirst} />
+          ) : (
+            <Sparkles size={13} />
+          )}
           <span>{prize.positionLabel || `${prize.position} Prize`}</span>
         </div>
         <div className={styles.winnerCountBadge}>
@@ -35,15 +66,33 @@ export const PrizeCard = ({ prize, giveawayId, remainingDays = '12d' }) => {
         </div>
       </div>
 
-      {/* Prize Image Frame */}
+      {/* Prize Image Showcase Stage */}
       <div className={styles.imageContainer} onClick={handleOpenDetail}>
-        <div className={styles.imageGlow}></div>
-        <img src={prize.image} alt={prize.name} className={styles.prizeImage} loading="lazy" />
+        <div className={styles.imageBackdropGlow}></div>
+        <div className={styles.stagePedestal}></div>
+        <img
+          src={prize.image}
+          alt={prize.name}
+          className={styles.prizeImage}
+          loading="lazy"
+        />
+
+        {/* Floating Spec Tag */}
+        {firstSpec && (
+          <div className={styles.specFloatTag}>
+            <ShieldCheck size={11} />
+            <span>{firstSpec}</span>
+          </div>
+        )}
       </div>
 
       {/* Prize Content */}
       <div className={styles.cardContent}>
-        <div className={styles.prizeTypeTag}>{prize.type} REWARD</div>
+        <div className={styles.prizeTypeTag}>
+          <span>{prize.type === 'PHYSICAL' ? '📦 PHYSICAL COURIER' : '⚡ DIGITAL VOUCHER'}</span>
+          {prize.approxValue && <span className={styles.approxVal}>Approx {prize.approxValue}</span>}
+        </div>
+
         <h3 className={styles.prizeName} onClick={handleOpenDetail}>
           {prize.name}
         </h3>
@@ -79,7 +128,7 @@ export const PrizeCard = ({ prize, giveawayId, remainingDays = '12d' }) => {
             title={`View details and join for ${prize.name}`}
           >
             <span>Join Now</span>
-            <ArrowRight size={15} />
+            <ArrowRight size={15} className={styles.btnArrow} />
           </button>
         </div>
       </div>

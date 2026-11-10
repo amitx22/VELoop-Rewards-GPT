@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useApp } from '../../context/AppContext.jsx';
 import { PrizeCard } from '../PrizeCard/PrizeCard.jsx';
 import styles from './FeaturedGiveaways.module.css';
-import { Gift, Smartphone, CreditCard, Sparkles } from 'lucide-react';
+import { Gift, Smartphone, CreditCard, Sparkles, Filter } from 'lucide-react';
 
 export const FeaturedGiveaways = () => {
   const { currentGiveaway } = useApp();
@@ -24,19 +24,19 @@ export const FeaturedGiveaways = () => {
         <div className={styles.sectionHeader}>
           <div className={styles.headerInfo}>
             <div className={styles.subTag}>
-              <Sparkles size={14} />
+              <Sparkles size={14} className={styles.sparkleIcon} />
               <span>OFFICIAL REWARD TIERS</span>
             </div>
             <h2 className={styles.title}>
               Available Giveaway <span className="gold-gradient-text">Prizes</span>
             </h2>
             <p className={styles.subtitle}>
-              Review the prizes below. Click <strong>Join Now</strong> to inspect entry terms, verify your
-              balance, and secure your official draw ticket.
+              Review active reward tiers below. Select <strong>Join Now</strong> to inspect entry terms,
+              check available balance, and secure your official draw ticket.
             </p>
           </div>
 
-          {/* Filter Pills */}
+          {/* Filter Pills with Gaming HUD Aesthetics */}
           <div className={styles.filterPills}>
             <button
               onClick={() => setFilter('ALL')}

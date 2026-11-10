@@ -19,6 +19,8 @@ import {
   FileCheck,
   Check,
   ExternalLink,
+  Sparkles,
+  Flame,
 } from 'lucide-react';
 
 const HOW_WORKS_STEPS = [
@@ -71,9 +73,15 @@ export const GiveawayDetail = () => {
     }
   };
 
+  const specsList = Array.isArray(prize.specs)
+    ? prize.specs
+    : typeof prize.specs === 'string'
+    ? prize.specs.split(/(?<=[a-z0-9])\s+(?=[A-Z0-9])|,\s*|\n/)
+    : [];
+
   return (
     <div className={styles.pageWrapper}>
-      {/* Top Breadcrumb Navigation (Page 40) */}
+      {/* Top Breadcrumb Navigation */}
       <div className={styles.navBar}>
         <div className={`container ${styles.navBarContainer}`}>
           <Link to="/" className={styles.backLink}>
@@ -81,7 +89,7 @@ export const GiveawayDetail = () => {
             <span>Giveaway Home</span>
           </Link>
           <div className={styles.breadcrumb}>
-            <span>Giveaways</span>
+            <span>Rewards Catalog</span>
             <ChevronRight size={14} />
             <span className={styles.crumbCurrent}>{prize.name}</span>
           </div>
@@ -95,19 +103,24 @@ export const GiveawayDetail = () => {
           <div className={styles.imageCol}>
             <div className={styles.imageWrapper}>
               <div className={styles.imageGlow}></div>
+              <div className={styles.pedestalStage}></div>
               <img src={prize.image} alt={prize.name} className={styles.prizeImage} />
+              
               <div className={styles.positionTag}>
-                <Trophy size={14} />
+                <Trophy size={14} className={styles.trophyIcon} />
                 <span>{prize.positionLabel}</span>
               </div>
             </div>
 
-            {/* Quick Specs Pill Box */}
-            {prize.specs && prize.specs.length > 0 && (
+            {/* Quick Specs Card */}
+            {specsList.length > 0 && (
               <div className={styles.specsCard}>
-                <div className={styles.specsTitle}>Key Specifications</div>
+                <div className={styles.specsHeader}>
+                  <Sparkles size={14} className={styles.specsStar} />
+                  <span className={styles.specsTitle}>Technical Highlights</span>
+                </div>
                 <ul className={styles.specsList}>
-                  {prize.specs.map((spec, i) => (
+                  {specsList.map((spec, i) => (
                     <li key={i}>
                       <Check size={14} className={styles.specCheck} />
                       <span>{spec}</span>
@@ -120,19 +133,22 @@ export const GiveawayDetail = () => {
 
           {/* Right Column: Giveaway Information & Action Card */}
           <div className={styles.infoCol}>
-            {/* Giveaway Badge */}
+            {/* Giveaway Badges */}
             <div className={styles.badgeRow}>
-              <span className={styles.exclusiveBadge}>✨ EXCLUSIVE GIVEAWAY</span>
+              <span className={styles.exclusiveBadge}>
+                <Flame size={13} />
+                <span>EXCLUSIVE VAULT DROP</span>
+              </span>
               <span className={styles.liveBadge}>
                 <span className={styles.dot}></span>
-                {currentGiveaway.status === 'ACTIVE' ? 'GIVEAWAY LIVE' : currentGiveaway.status}
+                <span>{currentGiveaway.status === 'ACTIVE' ? 'GIVEAWAY LIVE' : currentGiveaway.status}</span>
               </span>
             </div>
 
             <h1 className={styles.prizeTitle}>Win {prize.name}</h1>
             <p className={styles.prizeDesc}>{prize.description}</p>
 
-            {/* Meta Row: Winners, Participants, Countdown */}
+            {/* Meta Row: Winners, Participants, Approx Value */}
             <div className={styles.metaBox}>
               <div className={styles.metaItem}>
                 <span className={styles.metaLabel}>Winners</span>
@@ -152,13 +168,13 @@ export const GiveawayDetail = () => {
 
             {/* Countdown Bar */}
             <div className={styles.countdownBox}>
-              <Countdown targetDate={currentGiveaway.endAt} label="Giveaway Ends In" />
+              <Countdown targetDate={currentGiveaway.endAt} label="Draw Ends In" />
             </div>
 
-            {/* Price & Balance Verification Area (Page 41-43) */}
+            {/* Price & Balance Verification Area */}
             <div className={styles.participationCard}>
               <div className={styles.cardHeader}>
-                <span className={styles.cardHeaderTitle}>Entry Verification</span>
+                <span className={styles.cardHeaderTitle}>Entry Verification & Balance</span>
                 <span className={styles.singleEntryTag}>1 Entry Per Account</span>
               </div>
 
@@ -191,10 +207,10 @@ export const GiveawayDetail = () => {
                 </div>
               ) : isParticipating ? (
                 <div className={styles.alreadyParticipatingNotice}>
-                  <CheckCircle2 size={18} className={styles.greenCheck} />
+                  <CheckCircle2 size={20} className={styles.greenCheck} />
                   <div>
                     <strong>You're Already Participating ✓</strong>
-                    <p>Your entry has already been recorded for this event.</p>
+                    <p>Your official draw ticket has already been recorded for this event.</p>
                   </div>
                 </div>
               ) : hasEnough ? (
@@ -211,7 +227,7 @@ export const GiveawayDetail = () => {
                 </div>
               )}
 
-              {/* Dynamic Action CTA Button (Page 43, 48, 49) */}
+              {/* Dynamic Action CTA Button */}
               <div className={styles.actionBtnWrapper}>
                 {!isAuthenticated ? (
                   <button
@@ -257,7 +273,7 @@ export const GiveawayDetail = () => {
           </div>
         </div>
 
-        {/* Section: How This Giveaway Works (Page 44-45) */}
+        {/* Section: How This Giveaway Works */}
         <div className={styles.howItWorksSection}>
           <div className={styles.secHeader}>
             <h2 className={styles.secTitle}>How This Giveaway Works</h2>
@@ -277,7 +293,7 @@ export const GiveawayDetail = () => {
           </div>
         </div>
 
-        {/* Section: Important Terms & Conditions (Page 45-46) */}
+        {/* Section: Important Terms & Conditions */}
         <div className={styles.termsSection}>
           <div className={styles.secHeader}>
             <h2 className={styles.secTitle}>Important Terms & Conditions</h2>

@@ -1,68 +1,96 @@
 .section {
-  padding: 60px 0;
+  padding: 68px 0 80px 0;
   position: relative;
-  background: rgba(14, 19, 31, 0.4);
-  border-top: 1px solid var(--border-subtle);
 }
 
 .sectionHeader {
   text-align: center;
-  max-width: 680px;
-  margin: 0 auto 48px auto;
+  max-width: 660px;
+  margin: 0 auto 52px auto;
 }
 
 .tag {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.12em;
-  color: var(--accent-gold);
+  letter-spacing: 0.14em;
+  color: var(--accent-gold-light);
   text-transform: uppercase;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.28);
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+}
+
+.tagIcon {
+  color: #ffe600;
 }
 
 .title {
-  font-size: 36px;
-  font-weight: 800;
+  font-size: 40px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
   color: #ffffff;
+  line-height: 1.15;
   margin-bottom: 12px;
 }
 
 .subtitle {
   font-size: 15px;
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .contentGrid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.15fr;
   gap: 36px;
+  align-items: flex-start;
 }
 
 .colHeader {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 20px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--border-subtle);
+  gap: 14px;
+  margin-bottom: 24px;
 }
 
-.colHeaderIconGold {
-  color: #ffd000;
+.colIconWrapGold {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #ffe600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.colHeaderIconCyan {
+.colIconWrapCyan {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: rgba(6, 182, 212, 0.15);
+  border: 1px solid rgba(6, 182, 212, 0.35);
   color: #38bdf8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .colTitle {
   font-size: 20px;
   font-weight: 800;
   color: #ffffff;
+}
+
+.colSub {
+  font-size: 12px;
+  color: var(--text-muted);
 }
 
 /* Rules List */
@@ -73,31 +101,46 @@
 }
 
 .ruleCard {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
+  background: linear-gradient(135deg, rgba(16, 24, 48, 0.8) 0%, rgba(10, 15, 32, 0.9) 100%);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-md);
   padding: 16px 18px;
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  transition: border-color 0.2s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
 .ruleCard:hover {
-  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  border-color: rgba(245, 158, 11, 0.35);
 }
 
-.ruleIconCheck {
-  color: #34d399;
+.ruleIdTag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 800;
+  color: #ffe600;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 3px 8px;
+  border-radius: 4px;
   flex-shrink: 0;
   margin-top: 2px;
 }
 
+.ruleContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .ruleName {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   color: #ffffff;
-  margin-bottom: 4px;
 }
 
 .ruleText {
@@ -106,7 +149,7 @@
   line-height: 1.5;
 }
 
-/* Accordion */
+/* FAQ Accordion */
 .accordion {
   display: flex;
   flex-direction: column;
@@ -114,20 +157,17 @@
 }
 
 .accordionItem {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
+  background: linear-gradient(135deg, rgba(16, 24, 48, 0.8) 0%, rgba(10, 15, 32, 0.9) 100%);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-md);
   overflow: hidden;
-  transition: border-color 0.2s ease, background 0.2s ease;
-}
-
-.accordionItem:hover {
-  border-color: rgba(255, 255, 255, 0.18);
+  transition: border-color 0.2s ease;
 }
 
 .itemOpen {
-  border-color: rgba(245, 166, 35, 0.4);
-  background: rgba(22, 28, 44, 0.7);
+  border-color: rgba(6, 182, 212, 0.4);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
 }
 
 .accordionHeader {
@@ -137,39 +177,52 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 14px;
   text-align: left;
   cursor: pointer;
 }
 
 .questionText {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   color: #ffffff;
-  line-height: 1.4;
 }
 
-.chevron {
+.chevronWrap {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--text-muted);
   flex-shrink: 0;
-  transition: transform 0.25s ease;
+  transition: transform 0.25s ease, background 0.2s ease, color 0.2s ease;
 }
 
-.chevronRotated {
+.chevronWrapOpen {
   transform: rotate(180deg);
-  color: #ffd000;
+  background: rgba(6, 182, 212, 0.15);
+  color: #38bdf8;
 }
 
 .accordionBody {
   padding: 0 20px 18px 20px;
-  font-size: 13px;
-  color: #cbd5e1;
+  font-size: 13.5px;
+  color: var(--text-secondary);
   line-height: 1.6;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 992px) {
   .contentGrid {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 30px;
   }
 }

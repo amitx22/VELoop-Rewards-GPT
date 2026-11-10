@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useApp } from '../../context/AppContext.jsx';
 import { api } from '../../services/api.js';
 import styles from './WinnersTabs.module.css';
-import { Trophy, History, Clock, ShieldCheck, ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Trophy, History, Clock, ShieldCheck, ArrowRight, Sparkles, CheckCircle2, Radar } from 'lucide-react';
 
 export const WinnersTabs = ({ onOpenClaimModal }) => {
   const { currentGiveaway, user, isAuthenticated } = useApp();
@@ -41,17 +41,19 @@ export const WinnersTabs = ({ onOpenClaimModal }) => {
     <section id="winners-section" className={styles.section}>
       <div className={`container ${styles.container}`}>
         <div className={styles.sectionHeader}>
-          <div className={styles.tag}>
-            <Trophy size={14} />
-            <span>TRANSPARENT REWARDS ARCHIVE</span>
+          <div className={styles.headerInfo}>
+            <div className={styles.tag}>
+              <Trophy size={14} className={styles.tagIcon} />
+              <span>TRANSPARENT REWARDS VAULT</span>
+            </div>
+            <h2 className={styles.title}>
+              Winners & <span className="gold-gradient-text">Hall of Fame</span>
+            </h2>
+            <p className={styles.subtitle}>
+              Every winner is algorithmically determined and cryptographically verified. Personal details
+              are masked to protect user privacy.
+            </p>
           </div>
-          <h2 className={styles.title}>
-            Winners & <span className="gold-gradient-text">Hall of Fame</span>
-          </h2>
-          <p className={styles.subtitle}>
-            Every winner is algorithmically determined and cryptographically verified. Personal details
-            are masked to protect user privacy.
-          </p>
 
           {/* Tab Selector */}
           <div className={styles.tabBar}>
@@ -60,7 +62,7 @@ export const WinnersTabs = ({ onOpenClaimModal }) => {
               className={`${styles.tabBtn} ${activeTab === 'current' ? styles.tabActive : ''}`}
             >
               <Trophy size={15} />
-              <span>Current Giveaway</span>
+              <span>Current Draw</span>
               {isLive && <span className={styles.liveBadgePill}>LIVE</span>}
             </button>
             <button
@@ -79,22 +81,24 @@ export const WinnersTabs = ({ onOpenClaimModal }) => {
             {isLive ? (
               // Active giveaway message: DO NOT FALSELY SHOW CURRENT WINNERS (Page 12)
               <div className={styles.liveNoticeCard}>
-                <div className={styles.livePulseRing}>
-                  <Clock size={28} className={styles.clockIcon} />
+                <div className={styles.radarWrapper}>
+                  <div className={styles.radarRing1}></div>
+                  <div className={styles.radarRing2}></div>
+                  <Clock size={32} className={styles.clockIcon} />
                 </div>
                 <div className={styles.liveNoticeInfo}>
                   <div className={styles.liveStatusBadge}>
                     <span className={styles.pulseGreen}></span>
                     <span>Status: LIVE & ACCEPTING ENTRIES</span>
                   </div>
-                  <h3 className={styles.liveNoticeTitle}>Giveaway is Still Active!</h3>
+                  <h3 className={styles.liveNoticeTitle}>Official Draw in Progress</h3>
                   <p className={styles.liveNoticeText}>
-                    Winners have <strong>not yet been finalized</strong>. Selection is executed automatically
-                    on backend servers when the countdown timer expires.
+                    Winners have <strong>not yet been finalized</strong>. In strict compliance with fairness
+                    rules, the server-side random selection is executed automatically once the countdown timer expires.
                   </p>
                   <div className={styles.announcementMeta}>
-                    <span>Winner announcement:</span>
-                    <strong>Coming immediately after giveaway ends</strong>
+                    <span className={styles.metaLabel}>Winner Announcement:</span>
+                    <strong className={styles.metaTime}>Immediate upon timer expiry (00:00:00)</strong>
                   </div>
                 </div>
               </div>
@@ -108,7 +112,7 @@ export const WinnersTabs = ({ onOpenClaimModal }) => {
                       </div>
                       <div className={styles.verifiedShield}>
                         <ShieldCheck size={13} />
-                        <span>Verified</span>
+                        <span>Verified Draw</span>
                       </div>
                     </div>
                     <div className={styles.winnerName}>{winner.displayName}</div>
@@ -140,7 +144,7 @@ export const WinnersTabs = ({ onOpenClaimModal }) => {
                     <span className={styles.giveawayOriginBadge}>{winner.giveawayName}</span>
                     <div className={styles.verifiedShield}>
                       <ShieldCheck size={13} />
-                      <span>Verified</span>
+                      <span>Verified Draw</span>
                     </div>
                   </div>
                   <div className={styles.winnerName}>{winner.displayName}</div>
@@ -151,7 +155,7 @@ export const WinnersTabs = ({ onOpenClaimModal }) => {
                     </span>
                     <span className={styles.winnerStatusPill}>
                       <CheckCircle2 size={12} />
-                      <span>{winner.status === 'COMPLETED' ? 'Delivered' : 'Claimed'}</span>
+                      <span>{winner.status === 'COMPLETED' ? 'Delivered ✓' : 'Claimed ✓'}</span>
                     </span>
                   </div>
                 </div>
@@ -160,20 +164,22 @@ export const WinnersTabs = ({ onOpenClaimModal }) => {
           </div>
         )}
 
-        {/* Non-Winner Comfort State (Page 18: Users who did not win) */}
+        {/* Non-Winner Comfort State (Page 18, 28, 35) */}
         <div className={styles.nonWinnerBanner}>
           <div className={styles.nonWinnerLeft}>
-            <Sparkles size={20} className={styles.sparkleIcon} />
+            <div className={styles.sparkleWrap}>
+              <Sparkles size={22} className={styles.sparkleIcon} />
+            </div>
             <div>
-              <div className={styles.nonWinnerTitle}>Didn't win this time?</div>
+              <div className={styles.nonWinnerTitle}>Didn't win this round?</div>
               <div className={styles.nonWinnerSub}>
-                Keep participating and accumulating VEs for upcoming flagship giveaways.
+                Don't worry! New flagship reward draws unlock weekly. Keep banking VEs and SVEs for the next drop.
               </div>
             </div>
           </div>
           <a href="#featured-rewards" className={styles.exploreNextBtn}>
             <span>Explore Next Giveaway</span>
-            <ArrowRight size={15} />
+            <ArrowRight size={16} />
           </a>
         </div>
       </div>

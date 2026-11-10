@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import styles from './WinnerSlider.module.css';
-import { Trophy, Sparkles, ShieldCheck } from 'lucide-react';
+import { Trophy, ShieldCheck, Sparkles, CheckCircle2 } from 'lucide-react';
 
 const WINNER_ANNOUNCEMENTS = [
-  { id: 1, user: 'VE****72', prize: 'iPhone 15 Pro', date: 'August 2026', icon: '📱' },
-  { id: 2, user: 'VE****83', prize: 'Apple Watch Series 9', date: 'August 2026', icon: '⌚' },
-  { id: 3, user: 'VE****54', prize: 'AirPods Pro 2', date: 'August 2026', icon: '🎧' },
-  { id: 4, user: 'VE****92', prize: '₹2,000 Amazon Gift Card', date: 'August 2026', icon: '💳' },
-  { id: 5, user: 'VE****21', prize: 'iPhone 15 Pro', date: 'August 2026', icon: '📱' },
-  { id: 6, user: 'VE****42', prize: 'Apple Watch Series 9', date: 'August 2026', icon: '⌚' },
-  { id: 7, user: 'VE****27', prize: 'AirPods Pro 2', date: 'August 2026', icon: '🎧' },
+  { id: 1, user: 'VE****72', prize: 'iPhone 15 Pro Titanium', date: 'August 2026', tag: '1st Prize', icon: '📱' },
+  { id: 2, user: 'VE****83', prize: 'Apple Watch Series 9', date: 'August 2026', tag: '2nd Prize', icon: '⌚' },
+  { id: 3, user: 'VE****54', prize: 'AirPods Pro 2 USB-C', date: 'August 2026', tag: '3rd Prize', icon: '🎧' },
+  { id: 4, user: 'VE****92', prize: '₹2,000 Amazon Gift Card', date: 'August 2026', tag: 'Voucher', icon: '💳' },
+  { id: 5, user: 'VE****21', prize: 'iPhone 15 Pro Titanium', date: 'August 2026', tag: '1st Prize', icon: '📱' },
+  { id: 6, user: 'VE****42', prize: 'Apple Watch Series 9', date: 'August 2026', tag: '2nd Prize', icon: '⌚' },
+  { id: 7, user: 'VE****27', prize: 'AirPods Pro 2 USB-C', date: 'August 2026', tag: '3rd Prize', icon: '🎧' },
+  { id: 8, user: 'VE****66', prize: '₹500 Amazon Gift Card', date: 'August 2026', tag: 'Voucher', icon: '💳' },
 ];
 
 export const WinnerSlider = () => {
@@ -20,12 +21,12 @@ export const WinnerSlider = () => {
 
   return (
     <div className={styles.sliderOuter}>
-      <div className={styles.sliderContainer}>
+      <div className={`container ${styles.sliderContainer}`}>
         {/* Ticker Lead Tag */}
         <div className={styles.tickerLead}>
-          <div className={styles.pulseDot}></div>
+          <span className={styles.pulseDot}></span>
           <Trophy size={15} className={styles.leadIcon} />
-          <span className={styles.leadText}>LIVE WINNERS</span>
+          <span className={styles.leadText}>LIVE REWARD ROLL</span>
         </div>
 
         {/* Scrolling Ticker Track */}
@@ -34,19 +35,18 @@ export const WinnerSlider = () => {
           onMouseEnter={() => setIsPaused(true)}
           onMouseLeave={() => setIsPaused(false)}
         >
-          <div
-            className={`${styles.track} ${isPaused ? styles.paused : ''}`}
-          >
+          <div className={`${styles.track} ${isPaused ? styles.paused : ''}`}>
             {items.map((item, index) => (
               <div key={`${item.id}-${index}`} className={styles.tickerCard}>
                 <span className={styles.prizeEmoji}>{item.icon}</span>
-                <span className={styles.userName}>{item.user}</span>
+                <span className={styles.userBadge}>{item.user}</span>
                 <span className={styles.wonText}>won</span>
                 <span className={styles.prizeName}>{item.prize}</span>
-                <span className={styles.badgeVerified}>
-                  <ShieldCheck size={12} />
+                <span className={styles.tierTag}>{item.tag}</span>
+                <div className={styles.verifiedBadge}>
+                  <CheckCircle2 size={12} />
                   <span>Verified</span>
-                </span>
+                </div>
               </div>
             ))}
           </div>

@@ -1,138 +1,163 @@
 .sliderOuter {
-  width: 100%;
-  background: rgba(14, 19, 31, 0.95);
-  border-top: 1px solid var(--border-subtle);
-  border-bottom: 1px solid var(--border-subtle);
-  overflow: hidden;
   position: relative;
-  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  margin: -10px 0 24px 0;
 }
 
 .sliderContainer {
+  background: rgba(14, 21, 42, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-left: 3px solid var(--accent-gold);
+  border-radius: var(--radius-md);
+  padding: 8px 16px;
   display: flex;
   align-items: center;
-  max-width: 100%;
-  height: 48px;
+  gap: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
 }
 
 .tickerLead {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(90deg, #161c2e 0%, rgba(22, 28, 46, 0.95) 100%);
-  padding: 0 18px;
-  height: 100%;
-  z-index: 10;
-  border-right: 1px solid var(--border-subtle);
-  box-shadow: 4px 0 12px rgba(0, 0, 0, 0.3);
-  white-space: nowrap;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(245, 158, 11, 0.05) 100%);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
 }
 
 .pulseDot {
   width: 7px;
   height: 7px;
-  background: #10b981;
   border-radius: 50%;
-  box-shadow: 0 0 8px #10b981;
-  animation: pulse 1.5s ease-in-out infinite;
+  background: #f59e0b;
+  box-shadow: 0 0 10px #f59e0b;
+  animation: pulseLead 1.5s infinite;
+}
+
+@keyframes pulseLead {
+  0%, 100% { transform: scale(0.9); opacity: 0.7; }
+  50% { transform: scale(1.3); opacity: 1; }
 }
 
 .leadIcon {
-  color: #ffd000;
+  color: #fbbf24;
 }
 
 .leadText {
   font-family: var(--font-heading);
   font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.1em;
-  color: #ffd000;
+  letter-spacing: 0.12em;
+  color: #fef08a;
+  white-space: nowrap;
 }
 
 .trackWrapper {
   overflow: hidden;
-  white-space: nowrap;
-  display: flex;
-  flex: 1;
   position: relative;
-  mask-image: linear-gradient(to right, transparent, black 40px, black calc(100% - 40px), transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 40px, black calc(100% - 40px), transparent);
+  width: 100%;
+  display: flex;
+  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
 }
 
 .track {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 24px;
-  animation: scrollMarquee 38s linear infinite;
+  gap: 20px;
+  white-space: nowrap;
+  animation: tickerScroll 36s linear infinite;
   will-change: transform;
 }
 
-.track.paused {
+.paused {
   animation-play-state: paused;
 }
 
+@keyframes tickerScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 .tickerCard {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 8px;
-  padding: 5px 14px;
   background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 6px 14px;
   border-radius: var(--radius-full);
-  font-size: 13px;
-  color: #e2e8f0;
-  cursor: default;
-  transition: background 0.2s, border-color 0.2s;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  cursor: pointer;
 }
 
 .tickerCard:hover {
-  background: rgba(245, 166, 35, 0.08);
-  border-color: rgba(245, 166, 35, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(245, 158, 11, 0.4);
+  transform: translateY(-1px);
 }
 
 .prizeEmoji {
-  font-size: 15px;
+  font-size: 14px;
 }
 
-.userName {
+.userBadge {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: #38bdf8;
+  background: rgba(6, 182, 212, 0.12);
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.wonText {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.prizeName {
   font-family: var(--font-heading);
+  font-size: 13px;
   font-weight: 700;
   color: #ffffff;
 }
 
-.wonText {
-  color: var(--text-muted);
-  font-size: 12px;
-}
-
-.prizeName {
-  font-weight: 600;
-  color: #ffd000;
-}
-
-.badgeVerified {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  background: rgba(16, 185, 129, 0.15);
-  color: #34d399;
+.tierTag {
   font-size: 10px;
   font-weight: 700;
-  padding: 2px 7px;
-  border-radius: var(--radius-full);
+  color: var(--accent-gold-light);
+  background: rgba(245, 158, 11, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-@keyframes scrollMarquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+.verifiedBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #34d399;
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 0.6; transform: scale(0.9); }
-  50% { opacity: 1; transform: scale(1.15); }
-}
-
-@media (max-width: 600px) {
+@media (max-width: 768px) {
+  .tickerLead {
+    padding: 4px 8px;
+  }
   .leadText {
     display: none;
   }

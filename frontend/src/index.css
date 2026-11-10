@@ -1,53 +1,87 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
 
 :root {
-  --bg-primary: #0a0d14;
-  --bg-secondary: #0f1422;
-  --bg-tertiary: #161c2e;
-  --bg-card: rgba(18, 24, 38, 0.75);
-  --bg-card-hover: rgba(24, 32, 51, 0.9);
-  --bg-elevated: #1a2236;
+  /* Premium Dark Gaming/Fintech Palette */
+  --bg-primary: #060812;
+  --bg-secondary: #0a0f1f;
+  --bg-tertiary: #10172e;
+  --bg-surface: #131b36;
+  --bg-card: rgba(14, 21, 42, 0.78);
+  --bg-card-hover: rgba(22, 33, 64, 0.92);
+  --bg-card-solid: #111827;
+  --bg-elevated: #1a2544;
 
+  /* Borders & Glows */
   --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-medium: rgba(255, 255, 255, 0.14);
-  --border-glow: rgba(245, 166, 35, 0.4);
+  --border-medium: rgba(255, 255, 255, 0.15);
+  --border-accent: rgba(245, 158, 11, 0.35);
+  --border-cyan: rgba(6, 182, 212, 0.35);
+  --border-purple: rgba(139, 92, 246, 0.35);
+  --border-glow: rgba(245, 158, 11, 0.5);
 
-  --accent-gold: #f5a623;
-  --accent-gold-light: #ffd000;
-  --accent-gold-dark: #c9800c;
-  --accent-gold-gradient: linear-gradient(135deg, #ffd000 0%, #f5a623 50%, #d97706 100%);
+  /* Primary Accent: Hyper Gold */
+  --accent-gold: #f59e0b;
+  --accent-gold-light: #fbbf24;
+  --accent-gold-bright: #ffe600;
+  --accent-gold-dark: #b45309;
+  --accent-gold-gradient: linear-gradient(135deg, #ffe600 0%, #f59e0b 50%, #d97706 100%);
+  --accent-gold-glow: 0 0 25px rgba(245, 158, 11, 0.45);
 
+  /* Secondary Accent: Electric Cyan */
   --accent-cyan: #06b6d4;
-  --accent-cyan-glow: rgba(6, 182, 212, 0.3);
-  --accent-indigo: #6366f1;
-  --accent-emerald: #10b981;
-  --accent-emerald-glow: rgba(16, 185, 129, 0.3);
-  --accent-rose: #f43f5e;
+  --accent-cyan-light: #38bdf8;
+  --accent-cyan-glow: 0 0 25px rgba(6, 182, 212, 0.4);
+  --accent-cyan-gradient: linear-gradient(135deg, #38bdf8 0%, #06b6d4 60%, #0284c7 100%);
 
+  /* Secondary Accent: Cyber Purple */
+  --accent-purple: #8b5cf6;
+  --accent-purple-light: #a78bfa;
+  --accent-purple-glow: 0 0 25px rgba(139, 92, 246, 0.4);
+  --accent-purple-gradient: linear-gradient(135deg, #c084fc 0%, #8b5cf6 50%, #6366f1 100%);
+
+  /* Status Accents */
+  --accent-emerald: #10b981;
+  --accent-emerald-light: #34d399;
+  --accent-emerald-glow: 0 0 20px rgba(16, 185, 129, 0.4);
+  --accent-rose: #f43f5e;
+  --accent-rose-light: #fb7185;
+
+  /* Typography */
   --text-primary: #f8fafc;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
   --text-gold: #fbbf24;
+  --text-cyan: #38bdf8;
 
-  --font-heading: 'Outfit', sans-serif;
-  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
 
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
+  /* Sizing & Geometry */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 30px;
   --radius-full: 9999px;
 
-  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 10px 25px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.6);
-  --shadow-gold: 0 10px 30px rgba(245, 166, 35, 0.25);
+  /* Shadows */
+  --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.7);
+  --shadow-gold: 0 10px 35px rgba(245, 158, 11, 0.3);
+  --shadow-card: 0 12px 35px -8px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.07);
+  --shadow-card-hover: 0 22px 50px -10px rgba(0, 0, 0, 0.75), 0 0 30px rgba(245, 158, 11, 0.18);
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -60,23 +94,30 @@ body {
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
   overflow-x: hidden;
+  /* Cyber Ambient Background with subtle mesh and grid */
   background-image:
-    radial-gradient(ellipse at 20% 0%, rgba(245, 166, 35, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 80%, rgba(16, 185, 129, 0.05) 0%, transparent 60%);
+    radial-gradient(circle at 15% 10%, rgba(245, 158, 11, 0.09) 0%, transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(139, 92, 246, 0.12) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.06) 0%, transparent 60%),
+    radial-gradient(circle at 80% 85%, rgba(245, 158, 11, 0.08) 0%, transparent 50%),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 48px 48px, 48px 48px;
   background-attachment: fixed;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-weight: 800;
+  letter-spacing: -0.025em;
   color: var(--text-primary);
+  line-height: 1.2;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+  transition: all 0.2s ease;
 }
 
 button {
@@ -84,40 +125,32 @@ button {
   cursor: pointer;
   border: none;
   outline: none;
+  user-select: none;
 }
 
-/* Scrollbar */
+input, textarea, select {
+  font-family: inherit;
+  outline: none;
+}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
 }
 ::-webkit-scrollbar-track {
   background: var(--bg-primary);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--bg-tertiary);
+  background: rgba(255, 255, 255, 0.16);
   border-radius: var(--radius-full);
+  border: 2px solid var(--bg-primary);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--border-medium);
+  background: var(--accent-gold);
 }
 
-/* Glassmorphism utility */
-.glass-panel {
-  background: var(--bg-card);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-lg);
-}
-
-.gold-gradient-text {
-  background: var(--accent-gold-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline-block;
-}
-
+/* Common Layout Utilities */
 .container {
   max-width: 1280px;
   margin: 0 auto;
@@ -127,5 +160,82 @@ button {
 @media (max-width: 768px) {
   .container {
     padding: 0 16px;
+  }
+}
+
+/* Gaming Glassmorphic Utilities */
+.glass-panel {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+.gold-gradient-text {
+  background: var(--accent-gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 2px 8px rgba(245, 158, 11, 0.25));
+}
+
+.cyan-gradient-text {
+  background: var(--accent-cyan-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.purple-gradient-text {
+  background: var(--accent-purple-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Keyframe Animations */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes shimmerSweep {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes radarPing {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
   }
 }

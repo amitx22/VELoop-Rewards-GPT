@@ -4,9 +4,10 @@
   left: 0;
   right: 0;
   z-index: 999;
-  background: #0d121f;
-  border-top: 1.5px solid rgba(245, 166, 35, 0.5);
-  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.7);
+  background: rgba(8, 12, 24, 0.96);
+  backdrop-filter: blur(20px);
+  border-top: 1.5px solid rgba(245, 158, 11, 0.5);
+  box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(245, 158, 11, 0.15);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -16,29 +17,30 @@
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  background: rgba(22, 28, 44, 0.95);
+  background: rgba(16, 24, 48, 0.95);
   user-select: none;
 }
 
 .barTitle {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 800;
   color: #ffffff;
 }
 
 .sliderIcon {
-  color: #ffd000;
+  color: #ffe600;
 }
 
 .activeTag {
-  background: rgba(245, 166, 35, 0.15);
-  border: 1px solid rgba(245, 166, 35, 0.3);
-  color: #ffd000;
+  background: rgba(245, 158, 11, 0.18);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: #fef08a;
   font-size: 11px;
-  padding: 2px 8px;
+  font-family: var(--font-mono);
+  padding: 2px 10px;
   border-radius: var(--radius-full);
 }
 
@@ -47,13 +49,14 @@
   color: var(--text-muted);
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .panelBody {
-  padding: 16px 24px;
+  padding: 18px 24px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
   max-height: 50vh;
   overflow-y: auto;
 }
@@ -67,12 +70,12 @@
 .groupLabel {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-secondary);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
 }
 
 .userButtons,
@@ -85,12 +88,12 @@
 .userPill,
 .statusPill {
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--border-subtle);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-full);
   color: var(--text-secondary);
   padding: 6px 14px;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -103,10 +106,10 @@
 
 .pillSelected {
   background: var(--accent-gold-gradient);
-  color: #11141d;
-  font-weight: 700;
+  color: #0b0f19;
+  font-weight: 800;
   border-color: transparent;
-  box-shadow: 0 2px 8px rgba(245, 166, 35, 0.3);
+  box-shadow: 0 2px 12px rgba(245, 158, 11, 0.4);
 }
 
 .statusActive {
@@ -132,8 +135,8 @@
   align-items: center;
   gap: 12px;
   flex-wrap: wrap;
-  padding-top: 10px;
-  border-top: 1px solid var(--border-subtle);
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .balanceAddGroup {
@@ -145,26 +148,26 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  background: rgba(245, 166, 35, 0.12);
-  border: 1px solid rgba(245, 166, 35, 0.35);
-  color: #ffd000;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: #ffe600;
   padding: 6px 14px;
   border-radius: var(--radius-full);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .auditLogsBtn {
   display: flex;
   align-items: center;
   gap: 6px;
-  background: rgba(99, 102, 241, 0.15);
-  border: 1px solid rgba(99, 102, 241, 0.4);
-  color: #c7d2fe;
-  padding: 6px 14px;
+  background: rgba(139, 92, 246, 0.18);
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  color: #e9d5ff;
+  padding: 6px 16px;
   border-radius: var(--radius-full);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .resetBtn {
@@ -172,11 +175,12 @@
   align-items: center;
   gap: 6px;
   background: transparent;
-  border: 1px solid var(--border-subtle);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--text-muted);
-  padding: 6px 12px;
+  padding: 6px 14px;
   border-radius: var(--radius-full);
   font-size: 12px;
+  font-weight: 600;
 }
 
 /* Modal for Audit Logs */
@@ -184,8 +188,8 @@
   position: fixed;
   inset: 0;
   z-index: 1100;
-  background: rgba(3, 6, 12, 0.85);
-  backdrop-filter: blur(10px);
+  background: rgba(3, 5, 12, 0.88);
+  backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -193,15 +197,16 @@
 }
 
 .modalDialog {
-  background: #111624;
-  border: 1px solid var(--border-medium);
+  background: #0f162c;
+  border: 1px solid rgba(245, 158, 11, 0.35);
   border-radius: var(--radius-lg);
   width: 100%;
-  max-width: 760px;
-  max-height: 80vh;
+  max-width: 800px;
+  max-height: 82vh;
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(245, 158, 11, 0.15);
 }
 
 .modalHeader {
@@ -209,47 +214,50 @@
   align-items: center;
   justify-content: space-between;
   padding: 18px 24px;
-  background: rgba(18, 24, 38, 0.9);
-  border-bottom: 1px solid var(--border-subtle);
+  background: rgba(18, 26, 50, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .modalHeaderLeft {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .modalHeaderLeft h3 {
   font-size: 16px;
+  font-weight: 800;
   color: #ffffff;
 }
 
 .shieldGold {
-  color: #ffd000;
+  color: #ffe600;
 }
 
 .closeBtn {
   background: transparent;
   color: var(--text-muted);
   font-size: 16px;
+  cursor: pointer;
 }
 
 .modalBody {
-  padding: 20px 24px;
+  padding: 22px 26px;
   overflow-y: auto;
 }
 
 .modalBody h4 {
   font-size: 14px;
-  color: #ffd000;
-  margin-bottom: 10px;
+  font-weight: 800;
+  color: #ffe600;
+  margin-bottom: 12px;
 }
 
 .tableWrap {
   overflow-x: auto;
-  border: 1px solid var(--border-subtle);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius-sm);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .logTable {
@@ -260,24 +268,24 @@
 }
 
 .logTable th {
-  background: rgba(255, 255, 255, 0.04);
-  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 9px 14px;
   color: var(--text-muted);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .logTable td {
-  padding: 8px 12px;
-  border-top: 1px solid var(--border-subtle);
+  padding: 9px 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
   color: #e2e8f0;
 }
 
 .resSuccess {
   color: #34d399;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .resFail {
   color: #fb7185;
-  font-weight: 700;
+  font-weight: 800;
 }

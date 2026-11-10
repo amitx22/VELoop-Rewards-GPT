@@ -1,5 +1,5 @@
 .section {
-  padding: 60px 0;
+  padding: 64px 0 72px 0;
   position: relative;
 }
 
@@ -7,88 +7,110 @@
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  gap: 24px;
-  margin-bottom: 40px;
+  gap: 28px;
+  margin-bottom: 44px;
   flex-wrap: wrap;
 }
 
 .headerInfo {
-  max-width: 600px;
+  max-width: 620px;
 }
 
 .subTag {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 7px;
   font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.12em;
-  color: var(--accent-gold);
+  letter-spacing: 0.14em;
+  color: var(--accent-gold-light);
   text-transform: uppercase;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+
+.sparkleIcon {
+  color: #ffe600;
 }
 
 .title {
-  font-size: 36px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-size: 40px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
   color: #ffffff;
   line-height: 1.15;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .subtitle {
   font-size: 15px;
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: 1.65;
+}
+
+.subtitle strong {
+  color: #f1f5f9;
 }
 
 .filterPills {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: rgba(18, 24, 38, 0.7);
+  background: rgba(14, 21, 42, 0.85);
+  backdrop-filter: blur(12px);
   padding: 6px;
   border-radius: var(--radius-full);
-  border: 1px solid var(--border-subtle);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
 .filterBtn {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 16px;
+  gap: 7px;
+  padding: 9px 18px;
   border-radius: var(--radius-full);
   background: transparent;
   color: var(--text-secondary);
   font-size: 13px;
-  font-weight: 600;
-  transition: all 0.2s ease;
+  font-weight: 700;
+  transition: all 0.25s ease;
+  white-space: nowrap;
 }
 
 .filterBtn:hover {
   color: #ffffff;
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .filterActive {
   background: var(--accent-gold-gradient);
-  color: #11141d;
-  box-shadow: 0 4px 12px rgba(245, 166, 35, 0.25);
+  color: #0b0f19;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35);
+}
+
+.filterActive:hover {
+  color: #0b0f19;
+  background: var(--accent-gold-gradient);
 }
 
 .prizesGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  gap: 28px;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1080px) {
   .prizesGrid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 22px;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 680px) {
   .prizesGrid {
     grid-template-columns: 1fr;
   }
@@ -96,8 +118,12 @@
     flex-direction: column;
     align-items: flex-start;
   }
+  .title {
+    font-size: 30px;
+  }
   .filterPills {
     width: 100%;
     overflow-x: auto;
+    padding: 4px;
   }
 }

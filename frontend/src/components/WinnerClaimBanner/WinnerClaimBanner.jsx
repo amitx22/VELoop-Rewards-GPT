@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useApp } from '../../context/AppContext.jsx';
 import { api } from '../../services/api.js';
 import styles from './WinnerClaimBanner.module.css';
-import { Trophy, Gift, ArrowRight, CheckCircle2, Clock } from 'lucide-react';
+import { Trophy, Gift, ArrowRight, CheckCircle2, Clock, Sparkles } from 'lucide-react';
 
 export const WinnerClaimBanner = ({ onOpenClaimModal }) => {
   const { user, isAuthenticated, currentGiveaway } = useApp();
@@ -42,21 +42,25 @@ export const WinnerClaimBanner = ({ onOpenClaimModal }) => {
     <div className={styles.bannerOuter}>
       <div className={`container ${styles.container}`}>
         <div className={styles.bannerCard}>
+          <div className={styles.ambientGlow}></div>
+
           <div className={styles.leftInfo}>
             <div className={styles.trophyIconWrap}>
-              <Trophy size={28} className={styles.trophyIcon} />
+              <Trophy size={32} className={styles.trophyIcon} />
+              <Sparkles size={16} className={styles.sparkleTag} />
             </div>
             <div className={styles.textGroup}>
               <div className={styles.congratsBadge}>
-                <span>🎉 WINNER SPOTLIGHT</span>
+                <span className={styles.pulseDot}></span>
+                <span>OFFICIAL WINNER SPOTLIGHT</span>
               </div>
               <h2 className={styles.heading}>
                 Congratulations, {user.fullName}! You won {winnerData.prizeName}!
               </h2>
               <p className={styles.subtext}>
                 {isClaimed
-                  ? 'Your prize claim is in process. Our fulfillment team is preparing your reward.'
-                  : 'Your ticket was selected as an official winner! Please submit your claim details within the deadline.'}
+                  ? 'Your reward claim details have been recorded. Our fulfillment team is preparing your dispatch.'
+                  : 'Your ticket was drawn as an official verified winner! Please submit your delivery details before the deadline.'}
               </p>
             </div>
           </div>
@@ -64,7 +68,7 @@ export const WinnerClaimBanner = ({ onOpenClaimModal }) => {
           <div className={styles.actionCol}>
             {isClaimed ? (
               <div className={styles.claimedPill}>
-                <CheckCircle2 size={16} />
+                <CheckCircle2 size={18} />
                 <span>Claim Received ✓</span>
               </div>
             ) : (
@@ -74,12 +78,12 @@ export const WinnerClaimBanner = ({ onOpenClaimModal }) => {
                 className={styles.claimBtn}
               >
                 <span>Claim Your Prize</span>
-                <ArrowRight size={16} />
+                <ArrowRight size={17} />
               </button>
             )}
             <div className={styles.deadlineInfo}>
               <Clock size={13} />
-              <span>Claim within: 7 days</span>
+              <span>Claim Window: <strong>7 Days Remaining</strong></span>
             </div>
           </div>
         </div>

@@ -3,9 +3,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 20px;
   padding: 60px 20px;
   position: relative;
-  text-align: center;
+  z-index: 50;
 }
 
 .fullScreen {
@@ -17,132 +18,168 @@
   width: 280px;
   height: 280px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(245, 166, 35, 0.18) 0%, rgba(99, 102, 241, 0.08) 50%, transparent 70%);
-  filter: blur(35px);
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, rgba(139, 92, 246, 0.15) 50%, transparent 70%);
+  filter: blur(40px);
   pointer-events: none;
-  animation: pulseGlow 3s ease-in-out infinite alternate;
+  animation: pulseAura 3s infinite ease-in-out alternate;
+}
+
+@keyframes pulseAura {
+  from {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
+  to {
+    transform: scale(1.15);
+    opacity: 1;
+  }
 }
 
 .visualWrapper {
   position: relative;
-  width: 140px;
-  height: 140px;
+  width: 120px;
+  height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
 }
 
 .orbitRing {
   position: absolute;
-  width: 120px;
-  height: 120px;
+  inset: 0;
   border-radius: 50%;
-  border: 1.5px dashed rgba(245, 166, 35, 0.4);
-  animation: rotateOrbit 12s linear infinite;
+  border: 2px dashed rgba(245, 158, 11, 0.4);
+  animation: spinRing 12s linear infinite;
+}
+
+@keyframes spinRing {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .orbitDot {
   position: absolute;
-  width: 8px;
-  height: 8px;
-  background: #ffd000;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  box-shadow: 0 0 10px #ffd000;
-  top: 10px;
-  left: 66px;
-  animation: rotateOrbit 6s linear infinite;
-}
-
-.giftBoxWrapper {
-  position: relative;
-  z-index: 2;
-}
-
-.giftIconBox {
-  width: 76px;
-  height: 76px;
-  background: linear-gradient(135deg, #1e2538 0%, #111624 100%);
-  border: 2px solid rgba(245, 166, 35, 0.5);
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 25px rgba(245, 166, 35, 0.25);
-  animation: floatBox 2.5s ease-in-out infinite alternate;
-}
-
-.giftIcon {
-  color: #ffd000;
-  filter: drop-shadow(0 2px 8px rgba(245, 166, 35, 0.6));
+  background: #ffe600;
+  box-shadow: 0 0 12px #ffe600;
 }
 
 .floatingCoin {
   position: absolute;
-  width: 28px;
-  height: 28px;
-  background: linear-gradient(135deg, #ffe066 0%, #d48806 100%);
+  top: -10px;
+  right: -10px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
+  background: linear-gradient(135deg, #ffe600 0%, #d97706 100%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.5);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
-  font-size: 13px;
-  color: #1a1500;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 0 12px rgba(255, 208, 0, 0.5);
-  top: 12px;
-  right: 12px;
-  z-index: 3;
-  animation: coinBounce 3s ease-in-out infinite;
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 900;
+  color: #0b0f19;
+  animation: floatSlow 3s ease-in-out infinite alternate;
+}
+
+.giftBoxWrapper {
+  position: relative;
+}
+
+.giftIconBox {
+  width: 70px;
+  height: 70px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, #1f2937, #111827);
+  border: 1px solid rgba(245, 158, 11, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 20px rgba(245, 158, 11, 0.25);
+  animation: giftBounce 2s ease-in-out infinite;
+}
+
+@keyframes giftBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.giftIcon {
+  color: #fbbf24;
 }
 
 .sparkle1 {
   position: absolute;
   top: -10px;
-  left: -8px;
-  color: #ffd000;
-  animation: sparkleTwinkle 2s ease-in-out infinite;
+  left: -10px;
+  color: #ffe600;
+  animation: sparkleTwinkle 1.5s infinite alternate;
 }
 
 .sparkle2 {
   position: absolute;
-  bottom: -4px;
-  right: -8px;
-  color: #06b6d4;
-  animation: sparkleTwinkle 2.4s ease-in-out infinite 0.5s;
+  bottom: -6px;
+  right: -6px;
+  color: #38bdf8;
+  animation: sparkleTwinkle 1.8s infinite alternate-reverse;
+}
+
+@keyframes sparkleTwinkle {
+  from {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.2);
+  }
 }
 
 .badgeLabel {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  background: rgba(245, 166, 35, 0.12);
-  border: 1px solid rgba(245, 166, 35, 0.3);
-  padding: 4px 14px;
-  border-radius: 9999px;
+  gap: 7px;
+  font-family: var(--font-heading);
   font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #ffd000;
-  margin-bottom: 12px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  color: var(--accent-gold-light);
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
 }
 
 .badgeIcon {
-  color: #ffd000;
+  color: #ffe600;
 }
 
 .loadingMessage {
   font-family: var(--font-heading);
-  font-size: 17px;
-  font-weight: 600;
-  color: #f1f5f9;
-  margin-bottom: 18px;
-  min-height: 26px;
-  transition: opacity 0.3s ease;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  min-height: 24px;
 }
 
 .progressDots {
   display: flex;
+  align-items: center;
   gap: 8px;
 }
 
@@ -151,7 +188,7 @@
   height: 8px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2);
-  animation: dotPulse 1.4s ease-in-out infinite;
+  animation: dotPulse 1.2s infinite ease-in-out;
 }
 
 .dot:nth-child(2) {
@@ -164,32 +201,14 @@
   animation-delay: 0.6s;
 }
 
-@keyframes pulseGlow {
-  0% { transform: scale(0.9); opacity: 0.6; }
-  100% { transform: scale(1.15); opacity: 1; }
-}
-
-@keyframes rotateOrbit {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes floatBox {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(-8px); }
-}
-
-@keyframes coinBounce {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-12px) rotate(180deg); }
-}
-
-@keyframes sparkleTwinkle {
-  0%, 100% { transform: scale(0.8); opacity: 0.4; }
-  50% { transform: scale(1.2); opacity: 1; }
-}
-
 @keyframes dotPulse {
-  0%, 100% { background: rgba(255, 255, 255, 0.2); transform: scale(0.85); }
-  50% { background: #ffd000; transform: scale(1.25); box-shadow: 0 0 8px rgba(255, 208, 0, 0.6); }
+  0%, 100% {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(0.9);
+  }
+  50% {
+    background: var(--accent-gold);
+    box-shadow: 0 0 10px var(--accent-gold);
+    transform: scale(1.2);
+  }
 }
