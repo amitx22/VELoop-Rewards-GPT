@@ -1,46 +1,47 @@
+/* ============================================
+   WINNER SLIDER — Live Social Proof Ticker
+   ============================================ */
+
 .sliderOuter {
-  position: relative;
-  z-index: 10;
-  margin: -10px 0 24px 0;
+  background: rgba(10, 14, 24, 0.7);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 14px 0;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
 }
 
 .sliderContainer {
-  background: rgba(14, 21, 42, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-left: 3px solid var(--accent-gold);
-  border-radius: var(--radius-md);
-  padding: 8px 16px;
   display: flex;
   align-items: center;
-  gap: 16px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-  overflow: hidden;
+  gap: 20px;
 }
 
+/* Lead Tag */
 .tickerLead {
   display: flex;
   align-items: center;
   gap: 8px;
-  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(245, 158, 11, 0.05) 100%);
-  border: 1px solid rgba(245, 158, 11, 0.35);
-  padding: 6px 12px;
-  border-radius: var(--radius-full);
   flex-shrink: 0;
+  padding: 6px 14px;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
 }
 
 .pulseDot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #f59e0b;
-  box-shadow: 0 0 10px #f59e0b;
-  animation: pulseLead 1.5s infinite;
+  background: #34d399;
+  box-shadow: 0 0 10px rgba(52, 211, 153, 0.9);
+  animation: badgePulse 1.4s ease infinite;
+  display: inline-block;
 }
 
-@keyframes pulseLead {
-  0%, 100% { transform: scale(0.9); opacity: 0.7; }
+@keyframes badgePulse {
+  0%, 100% { transform: scale(0.9); opacity: 0.8; }
   50% { transform: scale(1.3); opacity: 1; }
 }
 
@@ -49,116 +50,127 @@
 }
 
 .leadText {
-  font-family: var(--font-heading);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 800;
-  letter-spacing: 0.12em;
-  color: #fef08a;
-  white-space: nowrap;
+  letter-spacing: 0.18em;
+  color: #fbbf24;
+  text-transform: uppercase;
 }
 
+/* Track Wrapper with fade masks */
 .trackWrapper {
+  flex: 1;
   overflow: hidden;
   position: relative;
-  width: 100%;
-  display: flex;
-  mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 5%, #000 95%, transparent);
 }
 
+.trackWrapper::before,
+.trackWrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.trackWrapper::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(10, 14, 24, 0.9), transparent);
+}
+
+.trackWrapper::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(10, 14, 24, 0.9), transparent);
+}
+
+/* Scrolling Track */
 .track {
   display: flex;
   align-items: center;
-  gap: 20px;
-  white-space: nowrap;
-  animation: tickerScroll 36s linear infinite;
-  will-change: transform;
+  gap: 0;
+  animation: marqueeScroll 32s linear infinite;
+  width: max-content;
 }
 
-.paused {
+.track.paused {
   animation-play-state: paused;
 }
 
-@keyframes tickerScroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
+/* Individual Ticker Cards */
 .tickerCard {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 6px 14px;
-  border-radius: var(--radius-full);
-  transition: all 0.2s ease;
-  flex-shrink: 0;
-  cursor: pointer;
-}
-
-.tickerCard:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(245, 158, 11, 0.4);
-  transform: translateY(-1px);
+  padding: 6px 20px;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
 }
 
 .prizeEmoji {
-  font-size: 14px;
+  font-size: 16px;
+  line-height: 1;
 }
 
 .userBadge {
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 700;
-  color: #38bdf8;
-  background: rgba(6, 182, 212, 0.12);
-  padding: 2px 7px;
-  border-radius: 4px;
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.1);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
 }
 
 .wonText {
   font-size: 12px;
   color: var(--text-muted);
-  font-weight: 500;
 }
 
 .prizeName {
-  font-family: var(--font-heading);
   font-size: 13px;
   font-weight: 700;
-  color: #ffffff;
+  color: #e2e8f0;
 }
 
 .tierTag {
   font-size: 10px;
-  font-weight: 700;
-  color: var(--accent-gold-light);
-  background: rgba(245, 158, 11, 0.1);
-  padding: 2px 6px;
-  border-radius: 4px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
 .verifiedBadge {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
   color: #34d399;
+  letter-spacing: 0.05em;
 }
 
 @media (max-width: 768px) {
-  .tickerLead {
-    padding: 4px 8px;
+  .sliderContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
   }
-  .leadText {
-    display: none;
+  .tickerLead {
+    align-self: flex-start;
+  }
+  .trackWrapper {
+    width: 100%;
   }
 }

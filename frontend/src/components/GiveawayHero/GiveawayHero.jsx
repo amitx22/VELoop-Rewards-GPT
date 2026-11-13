@@ -4,17 +4,8 @@ import { useApp } from '../../context/AppContext.jsx';
 import { Countdown } from '../Countdown/Countdown.jsx';
 import styles from './GiveawayHero.module.css';
 import {
-  Sparkles,
-  ArrowRight,
-  CheckCircle2,
-  Shield,
-  Gift,
-  Bell,
-  Trophy,
-  Flame,
-  Zap,
-  Coins,
-  ChevronDown,
+  Sparkles, ArrowRight, CheckCircle2, Shield, Gift,
+  Bell, Trophy, Flame, Zap, ChevronDown,
 } from 'lucide-react';
 
 export const GiveawayHero = () => {
@@ -27,74 +18,73 @@ export const GiveawayHero = () => {
   const isUpcoming = currentGiveaway.status === 'UPCOMING';
   const isParticipating = currentGiveaway.userState?.isParticipating;
 
-  // Primary CTA click action
   const handleCtaClick = () => {
     if (isEnded) {
-      const el = document.getElementById('winners-section');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('winners-section')?.scrollIntoView({ behavior: 'smooth' });
       return;
     }
-
     if (isUpcoming) {
-      alert('You will be notified as soon as this giveaway opens for entry!');
+      alert('You will be notified as soon as this giveaway opens!');
       return;
     }
-
-    // Direct user to first featured prize or prizes section
-    const el = document.getElementById('featured-rewards');
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('featured-rewards')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
     <section className={styles.heroSection}>
-      {/* Background Cyber Glow Ambience */}
-      <div className={styles.ambientGlowPrimary}></div>
-      <div className={styles.ambientGlowSecondary}></div>
+      {/* Layered backgrounds */}
+      <div className={styles.heroBg} />
+      <div className={styles.heroBgImage} />
+      <div className={styles.heroOverlay} />
+      <div className={styles.gridLines} />
 
       <div className={`container ${styles.heroContainer}`}>
+        {/* ── LEFT: Content ── */}
         <div className={styles.contentCol}>
-          {/* Top Gaming Badge */}
-          <div className={styles.badgeWrapper}>
-            <span className={styles.badgePulse}></span>
-            <Flame size={14} className={styles.badgeIcon} />
+          {/* Season Badge */}
+          <div className={styles.seasonBadge}>
+            <span className={styles.badgeDot} />
+            <Flame size={13} className={styles.badgeIcon} />
             <span className={styles.badgeText}>
               {isEnded
-                ? 'SEASON 2026 • CONCLUDED'
+                ? 'Season 2026 • Concluded'
                 : isUpcoming
-                ? 'SEASON 2026 • UPCOMING DROP'
-                : 'SEASON 2026 • EXCLUSIVE VAULT DROP'}
+                ? 'Season 2026 • Opening Soon'
+                : 'Season 2026 • Exclusive Giveaway'}
             </span>
           </div>
 
-          {/* Main Epic Heading */}
+          {/* Main Heading */}
           <h1 className={styles.mainHeading}>
-            VELOOP <span className="gold-gradient-text">Elite Rewards</span> Giveaway
+            <span>VELOOP</span>
+            <span className="gold-gradient-text">Elite Rewards</span>
+            <span>Giveaway</span>
           </h1>
 
           {/* Supporting Text */}
           <p className={styles.supportingText}>
-            Collect platform entries through challenges, unlock cryptographic draw tickets, and win
-            the flagship <strong>iPhone 15 Pro Titanium</strong>, <strong>Apple Watch Series 9</strong>,
-            and instant Amazon Pay vouchers.
+            Complete eligible platform activities, earn entries, and get a chance to win{' '}
+            <strong>iPhone 15 Pro</strong>, <strong>Apple Watch Series 9</strong>, <strong>AirPods Pro</strong>,
+            and instant Amazon vouchers.
           </p>
 
-          {/* Quick Highlight Pills */}
+          {/* Feature Pills */}
           <div className={styles.featurePills}>
             <div className={styles.featurePill}>
-              <Zap size={13} className={styles.featIconCyan} />
-              <span>Instant Entry Locking</span>
+              <Zap size={12} className={styles.iconCyan} />
+              <span>Instant Entry Lock</span>
             </div>
             <div className={styles.featurePill}>
-              <Shield size={13} className={styles.featIconGold} />
+              <Shield size={12} className={styles.iconGold} />
               <span>100% Provably Fair</span>
             </div>
             <div className={styles.featurePill}>
-              <Gift size={13} className={styles.featIconEmerald} />
+              <Gift size={12} className={styles.iconEmerald} />
               <span>Doorstep Courier</span>
             </div>
           </div>
 
-          {/* Status & Live Countdown HUD */}
+          {/* Countdown HUD Card */}
           <div className={styles.countdownCard}>
             <div className={styles.countdownHeaderRow}>
               <div className={styles.statusIndicator}>
@@ -102,12 +92,12 @@ export const GiveawayHero = () => {
                   className={`${styles.statusDot} ${
                     isEnded ? styles.statusEnded : isUpcoming ? styles.statusUpcoming : styles.statusLive
                   }`}
-                ></span>
+                />
                 <span className={styles.statusLabel}>
-                  {isEnded ? 'EVENT CONCLUDED' : isUpcoming ? 'OPENS IN' : 'LIVE DRAW COUNTDOWN'}
+                  {isEnded ? 'Event Concluded' : isUpcoming ? 'Opens Soon' : 'Live Draw Countdown'}
                 </span>
               </div>
-              <span className={styles.roundLabel}>Draw Round #08</span>
+              <span className={styles.roundLabel}>Draw #08</span>
             </div>
 
             <Countdown
@@ -116,23 +106,22 @@ export const GiveawayHero = () => {
             />
           </div>
 
-          {/* Interactive CTA & State Feedback */}
+          {/* CTA & State Actions */}
           <div className={styles.ctaWrapper}>
             <div className={styles.btnRow}>
               {!isAuthenticated ? (
                 <button
-                  id="hero-join-cta"
                   onClick={() => navigate('/login')}
                   className={`${styles.primaryBtn} ${styles.goldBtn}`}
                 >
-                  <Sparkles size={18} />
+                  <Sparkles size={17} />
                   <span>Sign In to Participate</span>
-                  <ArrowRight size={18} />
+                  <ArrowRight size={17} />
                 </button>
               ) : isParticipating ? (
                 <div className={styles.participatingBadge}>
                   <CheckCircle2 size={24} className={styles.checkIcon} />
-                  <div className={styles.participatingTextGroup}>
+                  <div>
                     <span className={styles.participatingTitle}>Ticket Locked & Confirmed ✓</span>
                     <span className={styles.participatingSub}>
                       Entry verified with {currentGiveaway.userState?.participation?.entryAmount}{' '}
@@ -142,73 +131,65 @@ export const GiveawayHero = () => {
                 </div>
               ) : isEnded ? (
                 <button
-                  id="hero-winners-cta"
                   onClick={handleCtaClick}
                   className={`${styles.primaryBtn} ${styles.purpleBtn}`}
                 >
-                  <Trophy size={18} />
+                  <Trophy size={17} />
                   <span>View Official Winners</span>
-                  <ArrowRight size={18} />
+                  <ArrowRight size={17} />
                 </button>
               ) : isUpcoming ? (
                 <button
-                  id="hero-notify-cta"
                   onClick={handleCtaClick}
                   className={`${styles.primaryBtn} ${styles.outlineBtn}`}
                 >
-                  <Bell size={18} />
+                  <Bell size={17} />
                   <span>Notify Me When Live</span>
                 </button>
               ) : (
                 <button
-                  id="hero-enter-cta"
                   onClick={handleCtaClick}
                   className={`${styles.primaryBtn} ${styles.goldBtn}`}
                 >
                   <span>Enter Giveaway Draw</span>
-                  <ArrowRight size={18} />
+                  <ArrowRight size={17} />
                 </button>
               )}
 
               <button
-                onClick={() => {
-                  const el = document.getElementById('featured-rewards');
-                  if (el) el.scrollIntoView({ behavior: 'smooth' });
-                }}
+                onClick={() => document.getElementById('featured-rewards')?.scrollIntoView({ behavior: 'smooth' })}
                 className={styles.secondaryBtn}
               >
                 <span>View Prizes</span>
-                <ChevronDown size={16} />
+                <ChevronDown size={15} />
               </button>
             </div>
 
             <div className={styles.trustMicro}>
-              <Shield size={15} className={styles.shieldIcon} />
-              <span>Cryptographically Seeded • 1 Entry Per Account • Anti-Fraud Protected</span>
+              <Shield size={14} className={styles.shieldIcon} />
+              <span>Cryptographically seeded • 1 entry per account • Anti-fraud protected</span>
             </div>
           </div>
         </div>
 
-        {/* Visual Hero Showcase */}
+        {/* ── RIGHT: Visual ── */}
         <div className={styles.visualCol}>
-          <div className={styles.imageBackdropGlow}></div>
-          <div className={styles.cyberRingOuter}></div>
-          
           <div className={styles.imageFrame}>
+            <div className={styles.imageBackdropGlow} />
+
             <img
               src="/assets/hero-banner.jpg"
-              alt="VELOOP Exclusive Rewards Giveaway Showcase"
+              alt="VELOOP Exclusive Rewards Giveaway"
               className={styles.heroImage}
               loading="eager"
             />
 
-            {/* Glowing Accent Overlay Border */}
-            <div className={styles.frameBorderHighlight}></div>
+            <div className={styles.frameBorderHighlight} />
 
-            {/* Floating Info Pill 1 */}
-            <div className={`${styles.floatPill} ${styles.pillTopLeft}`}>
+            {/* Grand Prize Pill */}
+            <div className={`${styles.floatPill} ${styles.pillTopRight}`}>
               <div className={styles.pillIconWrapGold}>
-                <Trophy size={16} />
+                <Trophy size={15} />
               </div>
               <div>
                 <div className={styles.pillTitle}>Grand Prize</div>
@@ -216,23 +197,23 @@ export const GiveawayHero = () => {
               </div>
             </div>
 
-            {/* Floating Info Pill 2 */}
+            {/* Live Activity Pill */}
+            <div className={`${styles.floatPill} ${styles.pillBottomLeft}`}>
+              <span className={styles.pillPulseDot} />
+              <div>
+                <div className={styles.pillTitle}>Live Activity</div>
+                <div className={styles.pillValue}>8,500+ Participants</div>
+              </div>
+            </div>
+
+            {/* Vault Pill */}
             <div className={`${styles.floatPill} ${styles.pillBottomRight}`}>
               <div className={styles.pillIconWrapEmerald}>
-                <Gift size={16} />
+                <Gift size={15} />
               </div>
               <div>
                 <div className={styles.pillTitle}>Verified Vault</div>
                 <div className={styles.pillValue}>1,200+ Prizes Dispatched</div>
-              </div>
-            </div>
-
-            {/* Floating Live Contenders Pill */}
-            <div className={`${styles.floatPill} ${styles.pillBottomLeft}`}>
-              <div className={styles.pillPulseDot}></div>
-              <div>
-                <div className={styles.pillTitle}>Live Activity</div>
-                <div className={styles.pillValue}>8,500+ Participants</div>
               </div>
             </div>
           </div>

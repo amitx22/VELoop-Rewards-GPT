@@ -1,23 +1,22 @@
+/* ============================================
+   COUNTDOWN — Premium Digital Clock
+   ============================================ */
+
 .wrapper {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 10px;
 }
 
 .headerLabel {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 7px;
   font-size: 11px;
-  font-weight: 800;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--accent-gold-light);
-  background: rgba(245, 158, 11, 0.12);
-  border: 1px solid rgba(245, 158, 11, 0.28);
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
 }
 
 .clockIcon {
@@ -34,109 +33,79 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-width: 64px;
-  padding: 10px 12px;
-  background: linear-gradient(180deg, #131b34 0%, #0a0f20 100%);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-top: 1px solid rgba(245, 158, 11, 0.5);
-  border-radius: var(--radius-sm);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  position: relative;
-  overflow: hidden;
-  transition: transform 0.2s ease, border-color 0.2s ease;
-}
-
-.timeBox::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  gap: 4px;
+  flex: 1;
+  min-width: 56px;
 }
 
 .timeVal {
-  font-family: var(--font-heading);
-  font-size: 26px;
-  font-weight: 900;
-  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 36px;
+  font-weight: 800;
+  color: #fff;
   line-height: 1;
   letter-spacing: -0.02em;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+  background: linear-gradient(180deg, #fff 40%, rgba(255, 255, 255, 0.6) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .pulseVal {
-  color: var(--accent-gold-bright);
-  text-shadow: 0 0 12px rgba(245, 158, 11, 0.5);
-  animation: pulseSecond 1s infinite alternate;
+  color: var(--accent-gold-light);
+  background: var(--accent-gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: secPulse 1s ease infinite;
 }
 
-@keyframes pulseSecond {
-  from {
-    opacity: 0.85;
-  }
-  to {
-    opacity: 1;
-    transform: scale(1.02);
-  }
+@keyframes secPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
 }
 
 .timeUnit {
   font-size: 10px;
   font-weight: 700;
+  letter-spacing: 0.1em;
   color: var(--text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-top: 5px;
 }
 
 .sep {
-  font-family: var(--font-heading);
-  font-size: 22px;
+  font-family: var(--font-mono);
+  font-size: 28px;
   font-weight: 800;
-  color: rgba(245, 158, 11, 0.6);
-  margin-bottom: 16px;
-  animation: blinkSep 1s infinite;
+  color: rgba(245, 158, 11, 0.5);
+  line-height: 1;
+  margin-bottom: 14px;
+  flex-shrink: 0;
 }
 
-@keyframes blinkSep {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.3;
-  }
-}
-
+/* Ended State */
 .endedBadge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(244, 63, 94, 0.15);
-  border: 1px solid rgba(244, 63, 94, 0.4);
-  color: #fb7185;
   padding: 10px 18px;
-  border-radius: var(--radius-sm);
+  background: rgba(244, 63, 94, 0.1);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  border-radius: var(--radius-full);
   font-size: 13px;
   font-weight: 800;
+  color: #fb7185;
   letter-spacing: 0.08em;
-  box-shadow: 0 4px 16px rgba(244, 63, 94, 0.2);
+  text-transform: uppercase;
 }
 
 @media (max-width: 480px) {
-  .timeBox {
-    min-width: 50px;
-    padding: 8px 6px;
-  }
   .timeVal {
-    font-size: 20px;
+    font-size: 28px;
   }
-  .timeUnit {
-    font-size: 9px;
+  .timeBox {
+    min-width: 44px;
   }
   .sep {
-    font-size: 16px;
-    margin-bottom: 12px;
+    font-size: 22px;
   }
 }

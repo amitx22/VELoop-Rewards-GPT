@@ -1,19 +1,27 @@
+/* ============================================
+   FOOTER — Premium Brand Footer
+   ============================================ */
+
 .footer {
-  background: #05070e;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 64px 0 36px 0;
-  margin-top: 64px;
-  position: relative;
-  z-index: 10;
+  background: rgba(7, 9, 14, 0.98);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding: 56px 0 28px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
 }
 
 .topRow {
   display: grid;
-  grid-template-columns: 1.4fr 2fr;
-  gap: 52px;
-  margin-bottom: 48px;
+  grid-template-columns: 1.2fr 2fr;
+  gap: 48px;
+  align-items: start;
 }
 
+/* Brand Column */
 .brandCol {
   display: flex;
   flex-direction: column;
@@ -27,14 +35,14 @@
 }
 
 .logoIconWrap {
-  width: 40px;
-  height: 40px;
-  background: var(--accent-gold-gradient);
-  border-radius: var(--radius-sm);
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  border-radius: 9px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 0 18px rgba(245, 158, 11, 0.4);
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.4);
 }
 
 .logoIcon {
@@ -43,17 +51,17 @@
 
 .logoText {
   font-family: var(--font-heading);
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 900;
-  letter-spacing: 0.04em;
-  color: #ffffff;
+  letter-spacing: 0.1em;
+  color: #fff;
 }
 
 .tagline {
-  font-size: 13.5px;
-  color: var(--text-secondary);
+  font-size: 13px;
+  color: var(--text-muted);
   line-height: 1.65;
-  max-width: 400px;
+  max-width: 300px;
 }
 
 .supportContact {
@@ -61,21 +69,23 @@
   align-items: center;
   gap: 8px;
   font-size: 13px;
-  color: var(--text-muted);
-}
-
-.supportContact strong {
-  color: var(--accent-gold-light);
+  color: var(--text-secondary);
 }
 
 .mailIcon {
-  color: #ffe600;
+  color: #38bdf8;
+  flex-shrink: 0;
 }
 
+.supportContact strong {
+  color: #38bdf8;
+}
+
+/* Links Grid */
 .linksGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 28px;
+  gap: 24px;
 }
 
 .linkGroup {
@@ -85,59 +95,84 @@
 }
 
 .linkGroup h4 {
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 800;
-  color: #ffffff;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  text-transform: uppercase;
   margin-bottom: 4px;
-  letter-spacing: 0.02em;
 }
 
 .linkGroup a,
 .linkGroup span {
   font-size: 13px;
   color: var(--text-secondary);
-  transition: all 0.2s ease;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  cursor: pointer;
 }
 
 .linkGroup a:hover {
-  color: #ffe600;
-  transform: translateX(2px);
+  color: #fbbf24;
 }
 
+/* Bottom Row */
 .bottomRow {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 28px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  gap: 20px;
+  flex-wrap: wrap;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.copyright {
   font-size: 12px;
   color: var(--text-muted);
-  flex-wrap: wrap;
-  gap: 16px;
+  line-height: 1.6;
+}
+
+.badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .badgeShield {
   display: flex;
   align-items: center;
   gap: 6px;
-  background: rgba(16, 185, 129, 0.12);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  color: #34d399;
-  padding: 5px 14px;
-  border-radius: var(--radius-full);
+  font-size: 11px;
   font-weight: 700;
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
 }
 
-@media (max-width: 860px) {
+/* Responsive */
+@media (max-width: 1024px) {
   .topRow {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 32px;
+  }
+  .linksGrid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 600px) {
   .linksGrid {
-    grid-template-columns: 1fr;
-    gap: 22px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .footer {
+    padding: 40px 0 24px;
+  }
+  .bottomRow {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

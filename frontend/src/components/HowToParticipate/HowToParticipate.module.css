@@ -1,13 +1,24 @@
+/* ============================================
+   HOW TO PARTICIPATE — Step Timeline
+   ============================================ */
+
 .section {
-  padding: 68px 0 76px 0;
+  padding: 80px 0;
   position: relative;
-  background: linear-gradient(180deg, rgba(10, 15, 32, 0) 0%, rgba(13, 19, 40, 0.45) 50%, rgba(10, 15, 32, 0) 100%);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
 }
 
 .header {
   text-align: center;
-  max-width: 680px;
-  margin: 0 auto 52px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
 .tag {
@@ -16,167 +27,156 @@
   gap: 7px;
   font-size: 11px;
   font-weight: 800;
-  letter-spacing: 0.14em;
-  color: var(--accent-gold-light);
+  letter-spacing: 0.18em;
+  color: var(--accent-cyan);
   text-transform: uppercase;
-  margin-bottom: 12px;
-  background: rgba(245, 158, 11, 0.12);
-  border: 1px solid rgba(245, 158, 11, 0.28);
-  padding: 4px 14px;
-  border-radius: var(--radius-full);
 }
 
 .tagIcon {
-  color: #ffe600;
+  color: var(--accent-cyan);
 }
 
 .title {
-  font-size: 40px;
+  font-size: clamp(28px, 4vw, 42px);
   font-weight: 900;
   letter-spacing: -0.03em;
-  color: #ffffff;
-  line-height: 1.15;
-  margin-bottom: 12px;
+  color: var(--text-primary);
+  line-height: 1.1;
 }
 
 .subtitle {
   font-size: 15px;
   color: var(--text-secondary);
+  max-width: 540px;
   line-height: 1.65;
 }
 
+/* Timeline */
 .timelineWrapper {
   position: relative;
 }
 
+/* Connecting line behind cards (desktop) */
 .laserConnectorLine {
   position: absolute;
-  top: 48px;
-  left: 5%;
-  right: 5%;
-  height: 2px;
-  background: linear-gradient(90deg, #ffe600 0%, #38bdf8 33%, #c084fc 66%, #34d399 100%);
-  opacity: 0.35;
+  top: 54px;
+  left: calc(12.5% + 20px);
+  right: calc(12.5% + 20px);
+  height: 1px;
+  background: linear-gradient(90deg,
+      rgba(245, 158, 11, 0.5) 0%,
+      rgba(6, 182, 212, 0.5) 33%,
+      rgba(139, 92, 246, 0.5) 66%,
+      rgba(16, 185, 129, 0.5) 100%);
   z-index: 0;
 }
 
 .timelineGrid {
-  position: relative;
-  z-index: 1;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
 }
 
+/* Step Card */
 .stepCard {
-  background: linear-gradient(135deg, rgba(16, 24, 48, 0.85) 0%, rgba(10, 15, 32, 0.95) 100%);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius-lg);
-  padding: 24px 22px;
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
 }
 
-.stepCard:hover {
-  transform: translateY(-6px);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
-}
-
+/* Phase badge + Icon */
 .stepHeader {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  gap: 12px;
 }
 
 .phaseBadge {
-  font-family: var(--font-mono);
-  font-size: 11px;
+  font-family: var(--font-heading);
+  font-size: 10px;
   font-weight: 800;
-  letter-spacing: 0.08em;
-  padding: 3px 9px;
-  border-radius: 4px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
   border: 1px solid;
 }
 
 .iconCircle {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-md);
-  border: 1px solid;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  transition: transform 0.3s ease;
+  border: 1px solid;
+  background: rgba(255, 255, 255, 0.04);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  position: relative;
+  z-index: 1;
 }
 
 .stepCard:hover .iconCircle {
-  transform: scale(1.1) rotate(5deg);
+  transform: scale(1.1);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
 }
 
+/* Content */
 .stepContent {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
 }
 
 .stepNumberWatermark {
-  position: absolute;
-  right: -5px;
-  bottom: -15px;
   font-family: var(--font-heading);
-  font-size: 64px;
+  font-size: 80px;
   font-weight: 900;
   color: rgba(255, 255, 255, 0.025);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  letter-spacing: -0.05em;
   pointer-events: none;
+  user-select: none;
   line-height: 1;
 }
 
 .stepTitle {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 800;
-  color: #ffffff;
-  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+  position: relative;
 }
 
 .stepDesc {
   font-size: 13px;
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: 1.65;
+  position: relative;
 }
 
+/* Arrow Connector (between cards) */
 .arrowConnector {
-  position: absolute;
-  right: -16px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: #0f162c;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-muted);
-  z-index: 2;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  display: none;
+  /* Replaced by laser line on desktop */
 }
 
+/* Responsive */
 @media (max-width: 1024px) {
   .timelineGrid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
   }
-  .laserConnectorLine, .arrowConnector {
+
+  .laserConnectorLine {
     display: none;
   }
 }
@@ -185,7 +185,26 @@
   .timelineGrid {
     grid-template-columns: 1fr;
   }
-  .title {
-    font-size: 30px;
+
+  .stepCard {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: left;
+    gap: 16px;
+  }
+
+  .stepHeader {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  .phaseBadge {
+    display: none;
+  }
+
+  .section {
+    padding: 48px 0;
   }
 }
